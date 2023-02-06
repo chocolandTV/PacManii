@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostEnemy : MonoBehaviour
+public class Ghost : MonoBehaviour
 {
     // STATS LEVEL 1  SCATTER 7" CHASE 20" SCATTER 7" CHASE 20" SCATTER 5" CHASE 20" SCATTER 5" 
     // LEVEL 2-4  - 7 - 20 - 7 - 20 - 5 - 17 - 0
@@ -21,7 +21,7 @@ public class GhostEnemy : MonoBehaviour
     ################################################ POSITION ################################################
     PACMAN  [40, 38] REDGHOST [48,38], ROSEGHOST [44,42] TURKY[38,52] ORANGEGHOST [50,46]
     */
-    
+    public int points = 200;
     private enum mode
     {
         CHASE,
