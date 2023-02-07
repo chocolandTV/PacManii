@@ -22,6 +22,7 @@ public class Ghost : MonoBehaviour
     PACMAN  [40, 38] REDGHOST [48,38], ROSEGHOST [44,42] TURKY[38,52] ORANGEGHOST [50,46]
     */
     public int points = 200;
+    public GameObject GhostEnemy {get;private set;}
     private enum mode
     {
         CHASE,
@@ -39,7 +40,7 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // GHOST INIT + STATE SET
     }
 
     // Update is called once per frame
