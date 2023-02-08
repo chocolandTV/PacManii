@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class PacMan : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    // INPUT 
+    // CHECK INPUT (position in mazegrid )
+    // A 
+    // private Vector2Int position;
+    // if(MazeGrid.CheckMoveNext(position, MazeGrid.Direction.Left)
+    // {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    // MOVE TOWARDS
+    // }
+    
 }

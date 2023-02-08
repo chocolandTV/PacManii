@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Transform pellets;
     public int score {get; private set;}
     public int lives {get; private set;}
-
+   
     private void Start() {
         NewGame();
     }
