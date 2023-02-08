@@ -10,14 +10,16 @@ public class Movement : MonoBehaviour
     public float speedMultiplier = 2.0f;
 
     public Vector2 startPosition;
-    public Vector2 direction{get; private set;}
+    public Vector2 direction{get; set;}
     public Vector2 nextDirection{get;private set;}
     public GameObject mazeObject;
     private MazeGrid maze;
-    // FUNCTIONS
+    private Rigidbody rigidbody;
+    // FUNCTIONS"Movement.rigidbody" blendet den vererbten Member "Component.rigidbody" aus. Verwenden Sie das new-Schlüsselwort, wenn das 
 
     private void Start() {
         maze = mazeObject.GetComponent<MazeGrid>();
+        rigidbody = GetComponent<Rigidbody>();
         // INIT PLAYER / GHOST SET POSITION   
         ResetState();
     }
@@ -30,7 +32,7 @@ public class Movement : MonoBehaviour
         this.enabled = true;
     }
     private void FixedUpdate() {
-        // Move ()
+        Move();
 
     }
     private void SetDirection(Vector2 dir)
@@ -49,7 +51,13 @@ public class Movement : MonoBehaviour
     }
     private void Move()
     {
+        Vector2 position = this.rigidbody.position;
+        Vector2 translate = this.direction * this.speed * this.speedMultiplier;
+        SetDirection(this.direction);
+        this.rigidbody.MovePosition(position + translate);
+    }
+    public void MoveFrightend()
+    {
 
     }
-
 }
