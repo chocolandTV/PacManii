@@ -80,6 +80,7 @@ public class MazeGrid : MonoBehaviour
         {
             result = true;
         }
+        Debug.Log("RESULT: "+ result);
         return result;
         // if position y+1 is True
         // if position y-1 is True

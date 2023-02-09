@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     private void Start() {
         NewGame();
     }
+    private void Update() {
+        if(this.lives <= 0)
+        {
+            NewGame();
+        }
+    }
     private void NewGame()
     {
         SetScore(0);
