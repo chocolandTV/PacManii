@@ -44,6 +44,12 @@ public class Movement : MonoBehaviour
         Move();
 
     }
+    private void Update() {
+        if(this.nextDirection != Vector2.zero)
+        {
+            SetDirection(this.nextDirection);
+        }
+    }
     private void SetDirection(Vector2 dir)
     {
         if(maze.CheckMoveNext(dir, this.transform.position))

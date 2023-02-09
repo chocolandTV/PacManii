@@ -8,24 +8,27 @@ public class PacMan : MonoBehaviour
     private Movement mov;
     private GameManager _gameManager;
     private Vector2 tempMov;
-    private void Start() {
+    private float smooth = 5.0f;
+    private void Start()
+    {
         mov = GetComponent<Movement>();
         _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             mov.direction = context.ReadValue<Vector2>();
         }
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Ghost"))
+        if (other.CompareTag("Ghost"))
         {
             _gameManager.GameOverState = true;
-        }else
-        if ( other.CompareTag("Frightend"))
+        }
+        else
+        if (other.CompareTag("Frightend"))
         {
             other.GetComponent<Movement>().MoveFrightend();
             // ADD SCORE
@@ -33,23 +36,30 @@ public class PacMan : MonoBehaviour
     }
     private void Animate()
     {
-        if(mov.direction.x < 0 && tempMov != mov.direction)
+        Quaternion target = Quaternion.Euler(0f, 0f, 0f);
+        if (mov.direction.x < 0 && tempMov != mov.direction)//LEFT
         {
-            this.gameObject.transform.Rotate(Vector3.right*90, Space.Self);
+            target.y = -90f;
         }
-         if(mov.direction.y > 0 && tempMov != mov.direction){
-            this.gameObject.transform.Rotate(Vector3.left*90, Space.Self);
+        if (mov.direction.y > 0 && tempMov != mov.direction)
+        {//RIGHT
+            target.y = 90f;
         }
-        if(mov.direction.y < 0 && tempMov != mov.direction)
+        if (mov.direction.y < 0 && tempMov != mov.direction)// DOWN
         {
-            this.gameObject.transform.Rotate(Vector3.up*90, Space.Self);
+            target.x = 90f;
+            target.y = 90f;
         }
-         if(mov.direction.y > 0 && tempMov != mov.direction){
-            this.gameObject.transform.Rotate(Vector3.down*90, Space.Self);
+        if (mov.direction.y > 0 && tempMov != mov.direction)
+        {// UP
+            target.x = -90f;
+            target.y = 90f;
         }
         tempMov = mov.direction;
+        //this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
     }
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         Animate();
     }
     // INPUT 
@@ -58,7 +68,7 @@ public class PacMan : MonoBehaviour
     // private Vector2Int position;
     // if(MazeGrid.CheckMoveNext(position, MazeGrid.Direction.Left)
     // {
-        
+
     // }
-    
+
 }
