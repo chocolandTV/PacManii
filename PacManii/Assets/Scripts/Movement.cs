@@ -13,8 +13,8 @@ public class Movement : MonoBehaviour
     public Vector2 initialDirection;
     
     public Rigidbody rigidbody {get;private set;}
-    public Vector2 direction {get; set;}
-    public Vector2 nextDirection {get;private set;}
+    public Vector2 direction {get; private set;}
+    public Vector2 nextDirection {get; set;}
     public Vector3 startingPosition {get;private set;}
     public GameObject mazeObject;
     private MazeGrid maze;
@@ -28,7 +28,8 @@ public class Movement : MonoBehaviour
     }
     private void Start() {
         maze = mazeObject.GetComponent<MazeGrid>();
-       
+        maze.pacmanPos = this.startingPosition;
+        Debug.Log("PacMan startposition: " + maze.pacmanPos);
         // INIT PLAYER / GHOST SET POSITION   
         ResetState();
     }
@@ -52,17 +53,11 @@ public class Movement : MonoBehaviour
     }
     private void SetDirection(Vector2 dir)
     {
-        if(maze.CheckMoveNext(dir, this.transform.position))
-        {
-            // CHECKED IF NEXT POSITION IS NO WALL
-            // this.direction
-            this.direction = dir;
+        
+            this.direction = maze.CheckNextMove(dir,maze.pacmanPos);
             this.nextDirection = Vector2.zero;
 
-        }
-        else{
-            this.nextDirection = direction;
-        }
+        
     }
     private void Move()
     {

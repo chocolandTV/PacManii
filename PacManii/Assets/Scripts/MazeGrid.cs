@@ -19,14 +19,13 @@ public class MazeGrid : MonoBehaviour
     GRID  21 *21
     */
    
-    public Vector2 pacmanPos { get; private set; }
+    public Vector2 pacmanPos { get; set; }
+    public Vector2[] ghostPos{ get; set;}
     public bool[,] mazeGrid { get; private set; }
     [SerializeField] public GameObject level;
-    private int MazeSize = 21;
+    public int MazeSize = 21;
     private Vector3 offset;
-    // public void GetPacManPos()
-    // public void nextturn() LEFT, RIGHT, TOP, DOWN
-    // PACMAN POSITON 10, 0 
+
     private void Start()
     {
         
@@ -38,8 +37,6 @@ public class MazeGrid : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = new Ray(new Vector3(x,y, -4)+transform.position+ offset,Vector3.forward);
-                //Camera.main.ScreenPointToRay(new Vector3(x, y, -1));
-                // Debug.Log(x + "  y: " + y);
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (hit.transform.tag == "Wall")
@@ -61,31 +58,35 @@ public class MazeGrid : MonoBehaviour
         
 
     }
-    public bool CheckMoveNext(Vector2 dir, Vector2 position)
+    public Vector2 CheckNextMove(Vector2 dir, Vector3 position)
     {
-        bool result = false;
-        if(dir == Vector2.left && mazeGrid[(int)position.x-1,(int)position.y] == true)
+        Vector2 result = Vector2.zero;
+        // CHECK IF DIRECTION IS UP
+        if(dir.y == 1.0f && (int)position.y+1 <= MazeSize)
         {
-            result = true;
+            if(mazeGrid[(int)position.x,(int)position.y+1]){
+                result = Vector2.up;}
         }
-        if(dir == Vector2.right && mazeGrid[(int)position.x+1,(int)position.y]== true)
+        // CHECK IF DIRECTION IS DOWN
+        if(dir.y == -1.0f && (int)position.y-1 >= 0)
         {
-            result = true;
+           if(mazeGrid[(int)position.x, (int)position.y-1]){
+                result = Vector2.down;}
         }
-        if(dir == Vector2.up && mazeGrid[(int)position.x,(int)position.y+1]== true)
+        // CHECK IF DIRECTION IS LEFT
+        if(dir.x == -1.0f && (int)position.x-1 >= 0) 
         {
-            result = true;
+            if(mazeGrid[(int)position.x-1,(int)position.y]){
+                result = Vector2.left;}
         }
-        if(dir == Vector2.down && mazeGrid[(int)position.x, (int)position.y-1]== true)
+        // CHECK IF DIRECTION IS RIGHT
+        if(dir.x == 1.0f  && (int)position.x+1 <= MazeSize)
         {
-            result = true;
+           if(mazeGrid[(int)position.x+1,(int)position.y]){
+                result = Vector2.right;}
         }
         Debug.Log("RESULT: "+ result);
         return result;
-        // if position y+1 is True
-        // if position y-1 is True
-        // if position x+1 is True
-        // if position x-1
     }
     public void PrintArray()
     {

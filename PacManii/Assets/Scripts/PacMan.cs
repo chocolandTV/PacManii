@@ -7,7 +7,7 @@ public class PacMan : MonoBehaviour
 {
     private Movement mov;
     private GameManager _gameManager;
-    private Vector2 tempMov;
+    
     private float smooth = 5.0f;
     private void Start()
     {
@@ -18,7 +18,7 @@ public class PacMan : MonoBehaviour
     {
         if (context.performed)
         {
-            mov.direction = context.ReadValue<Vector2>();
+            mov.nextDirection = context.ReadValue<Vector2>();
         }
     }
     void OnTriggerEnter(Collider other)
@@ -37,25 +37,25 @@ public class PacMan : MonoBehaviour
     private void Animate()
     {
         Quaternion target = Quaternion.Euler(0f, 0f, 0f);
-        if (mov.direction.x < 0 && tempMov != mov.direction)//LEFT
+        if (mov.direction.x < 0)//LEFT
         {
             target.y = -90f;
         }
-        if (mov.direction.y > 0 && tempMov != mov.direction)
+        if (mov.direction.y > 0 )
         {//RIGHT
             target.y = 90f;
         }
-        if (mov.direction.y < 0 && tempMov != mov.direction)// DOWN
+        if (mov.direction.y < 0 )// DOWN
         {
             target.x = 90f;
             target.y = 90f;
         }
-        if (mov.direction.y > 0 && tempMov != mov.direction)
+        if (mov.direction.y > 0)
         {// UP
             target.x = -90f;
             target.y = 90f;
         }
-        tempMov = mov.direction;
+        
         //this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
     }
     private void FixedUpdate()
