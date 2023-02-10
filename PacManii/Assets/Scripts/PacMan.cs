@@ -7,7 +7,7 @@ public class PacMan : MonoBehaviour
 {
     private Movement mov;
     private GameManager _gameManager;
-    
+  
     private float smooth = 5.0f;
     private void Start()
     {

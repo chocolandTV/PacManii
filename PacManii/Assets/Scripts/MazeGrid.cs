@@ -65,25 +65,29 @@ public class MazeGrid : MonoBehaviour
         if(dir.y == 1.0f && (int)position.y+1 <= MazeSize)
         {
             if(mazeGrid[(int)position.x,(int)position.y+1]){
-                result = Vector2.up;}
+                 Debug.Log(Vector2.up);
+                return Vector2.up;}
         }
         // CHECK IF DIRECTION IS DOWN
         if(dir.y == -1.0f && (int)position.y-1 >= 0)
         {
            if(mazeGrid[(int)position.x, (int)position.y-1]){
-                result = Vector2.down;}
+             Debug.Log(Vector2.down);
+               return  Vector2.down;}
         }
         // CHECK IF DIRECTION IS LEFT
         if(dir.x == -1.0f && (int)position.x-1 >= 0) 
         {
             if(mazeGrid[(int)position.x-1,(int)position.y]){
-                result = Vector2.left;}
+                 Debug.Log(Vector2.left);
+                return Vector2.left;}
         }
         // CHECK IF DIRECTION IS RIGHT
-        if(dir.x == 1.0f  && (int)position.x+1 <= MazeSize)
+        if(dir.x == 1.0f  && (int)position.x+1 < MazeSize)
         {
            if(mazeGrid[(int)position.x+1,(int)position.y]){
-                result = Vector2.right;}
+                Debug.Log(Vector2.right);
+                return Vector2.right;}
         }
         Debug.Log("RESULT: "+ result);
         return result;
