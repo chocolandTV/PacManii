@@ -30,8 +30,6 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         maze = mazeObject.GetComponent<MazeGrid>();
-        maze.pacmanPos = this.startingPosition;
-        Debug.Log("PacMan startposition: " + maze.pacmanPos);
         // INIT PLAYER / GHOST SET POSITION   
         ResetState();
     }
@@ -58,7 +56,8 @@ public class Movement : MonoBehaviour
     private void SetDirection(Vector2 dir)
     {
 
-        this.direction = maze.CheckNextMove(dir, maze.pacmanPos);
+        
+        this.direction = maze.CheckNextMove(dir, this.rigidbody.position);
         this.nextDirection = Vector2.zero;
 
 
@@ -66,10 +65,9 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         Vector2 position = this.rigidbody.position;
-        //Vector2 position = maze.pacmanPos;
         Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
         this.rigidbody.MovePosition(position + translation);
-        maze.pacmanPos = (maze.pacmanPos + translation);
+        
     }
     public void MoveFrightend()
     {

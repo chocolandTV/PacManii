@@ -19,8 +19,7 @@ public class MazeGrid : MonoBehaviour
     GRID  21 *21
     */
    
-    public Vector2 pacmanPos { get; set; }
-    public Vector2[] ghostPos{ get; set;}
+
     public bool[,] mazeGrid { get; private set; }
     [SerializeField] public GameObject level;
     public int MazeSize = 21;
@@ -60,13 +59,18 @@ public class MazeGrid : MonoBehaviour
     }
     public Vector2 CheckNextMove(Vector2 dir, Vector3 position)
     {
+        position += new Vector3(Mathf.Abs(MazeSize/2),Mathf.Abs(MazeSize/2),0);
+        Debug.Log("POSITIONOFFSET: " + position);
         Vector2 result = Vector2.zero;
         // CHECK IF DIRECTION IS UP
-        if(dir.y == 1.0f && (int)position.y+1 <= MazeSize)
+        if(dir.y == 1.0f && (int)position.y+1 < MazeSize)
         {
             if(mazeGrid[(int)position.x,(int)position.y+1]){
                  Debug.Log(Vector2.up);
                 return Vector2.up;}
+                else{
+                    Debug.Log("Direction is out of Bounds  = " + dir);
+                }
         }
         // CHECK IF DIRECTION IS DOWN
         if(dir.y == -1.0f && (int)position.y-1 >= 0)
@@ -87,9 +91,11 @@ public class MazeGrid : MonoBehaviour
         {
            if(mazeGrid[(int)position.x+1,(int)position.y]){
                 Debug.Log(Vector2.right);
-                return Vector2.right;}
+                return Vector2.right;}else{
+                    Debug.Log("Direction is out of Bounds  = " + dir);
+                }
         }
-        Debug.Log("RESULT: "+ result);
+        Debug.Log("no Input: "+ result);
         return result;
     }
     public void PrintArray()
