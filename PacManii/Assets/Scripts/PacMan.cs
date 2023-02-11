@@ -14,7 +14,7 @@ public class PacMan : MonoBehaviour
     public int collectedPallets { get; private set; }
     public GameObject palletAfterEffectPrefab;
     private GameObject palletAfterEffectObject;
-   
+
     private void Start()
     {
         mov = GetComponent<Movement>();
@@ -29,7 +29,15 @@ public class PacMan : MonoBehaviour
         {
             mov.nextDirection = context.ReadValue<Vector2>();
             // Animate(mov.nextDirection);
-            this.transform.rotation = Quaternion.LookRotation(mov.nextDirection);
+            if (mov.nextDirection.y != 0)
+            {
+                this.transform.rotation = Quaternion.LookRotation(mov.nextDirection, Vector3.back);
+            }
+            else
+            if (mov.nextDirection.x != 0)
+            {
+                this.transform.rotation = Quaternion.LookRotation(mov.nextDirection, Vector3.up);
+            }
             //this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (mov.nextDirection), Time.deltaTime * 40f);
 
         }
@@ -113,5 +121,5 @@ public class PacMan : MonoBehaviour
     // {
 
     // }
-    
+
 }
