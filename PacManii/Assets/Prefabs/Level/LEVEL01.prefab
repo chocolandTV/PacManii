@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8357700178349432156}
   m_Layer: 0
   m_Name: TeleporterA
-  m_TagString: Untagged
+  m_TagString: Teleport1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537806630430514297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 1, z: -1}
+  m_LocalPosition: {x: -10, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1166050148283006466}
+  MazeSize: 21
 --- !u!1 &1166050148476678535
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +449,8 @@ Transform:
   - {fileID: 3653761621971503676}
   - {fileID: 2581635315576843383}
   - {fileID: 2581635315996649550}
+  - {fileID: 3653761621772947952}
+  - {fileID: 3653761622319629729}
   m_Father: {fileID: 1166050148283006467}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -465,7 +468,7 @@ GameObject:
   - component: {fileID: 1831344683157212099}
   m_Layer: 0
   m_Name: TeleporterB
-  m_TagString: Untagged
+  m_TagString: Teleport2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,7 +481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6070186628696429591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: 1, z: -1}
+  m_LocalPosition: {x: 10, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -619,6 +622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622601859598 stripped
@@ -696,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -775,6 +786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (101)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622613043772 stripped
@@ -852,6 +867,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (145)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -1009,6 +1028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (94)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622648178353 stripped
@@ -1086,6 +1109,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -1165,6 +1192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622616538901 stripped
@@ -1242,6 +1273,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (71)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -1321,6 +1356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622655280597 stripped
@@ -1398,6 +1437,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -1477,6 +1520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (104)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622701512947 stripped
@@ -1554,6 +1601,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -1633,6 +1684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622707946181 stripped
@@ -1710,6 +1765,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -1925,6 +1984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622696148114 stripped
@@ -2080,6 +2143,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -2237,6 +2304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622454432779 stripped
@@ -2314,6 +2385,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -2549,6 +2624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622545616218 stripped
@@ -2705,6 +2784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622569459131 stripped
@@ -2782,6 +2865,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (123)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -2861,6 +2948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622558110771 stripped
@@ -2939,12 +3030,98 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622332319639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
   m_PrefabInstance: {fileID: 1166050148305087014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1166050148326279184
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1166050149645348367}
+    m_Modifications:
+    - target: {fileID: 552223965817740452, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_Name
+      value: PalletSmall (100)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+--- !u!4 &3653761622319629729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+  m_PrefabInstance: {fileID: 1166050148326279184}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1166050148329997253
 PrefabInstance:
@@ -3016,6 +3193,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (60)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -3095,6 +3276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (74)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622364718232 stripped
@@ -3160,6 +3345,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -3239,6 +3428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622369148996 stripped
@@ -3316,6 +3509,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -3551,6 +3748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (93)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622413713516 stripped
@@ -3612,6 +3813,14 @@ PrefabInstance:
     - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_Name
       value: SuperPallet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
+      propertyPath: m_TagString
+      value: SuperPallet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805292736377010499, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
@@ -3691,6 +3900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622387834542 stripped
@@ -3768,6 +3981,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (83)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -3847,6 +4064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622445225682 stripped
@@ -3924,6 +4145,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (76)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -4081,6 +4306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (120)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622194740079 stripped
@@ -4236,6 +4465,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (144)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -4393,6 +4626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622272506593 stripped
@@ -4458,6 +4695,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -4615,6 +4856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (112)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622260405074 stripped
@@ -4676,6 +4921,10 @@ PrefabInstance:
     - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_Name
       value: SuperPallet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     - target: {fileID: 8805292736377010499, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_IsTrigger
@@ -4759,6 +5008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (136)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623146375857 stripped
@@ -4836,6 +5089,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (126)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -4915,6 +5172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623184357445 stripped
@@ -4993,6 +5254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623185005360 stripped
@@ -5070,6 +5335,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (59)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -5227,6 +5496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623245231680 stripped
@@ -5305,6 +5578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (127)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623247989742 stripped
@@ -5370,6 +5647,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -5526,6 +5807,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (121)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -5761,6 +6046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623045226263 stripped
@@ -5822,6 +6111,10 @@ PrefabInstance:
     - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_Name
       value: SuperPallet (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     - target: {fileID: 8805292736377010499, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_IsTrigger
@@ -5905,6 +6198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623027699168 stripped
@@ -5982,6 +6279,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (131)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -6127,6 +6428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623084573129 stripped
@@ -6204,6 +6509,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -6439,6 +6748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761623095406023 stripped
@@ -6504,6 +6817,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -6583,6 +6900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (102)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622866583464 stripped
@@ -6660,6 +6981,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -6895,6 +7220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (91)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622917309845 stripped
@@ -6972,6 +7301,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -7129,6 +7462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (140)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622897464706 stripped
@@ -7206,6 +7543,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -7285,6 +7626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622947679135 stripped
@@ -7363,6 +7708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (148)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622919253598 stripped
@@ -7428,6 +7777,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -7507,6 +7860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (134)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622926116948 stripped
@@ -7585,6 +7942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622954600987 stripped
@@ -7662,6 +8023,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (143)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -7819,6 +8184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (138)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622964544926 stripped
@@ -7896,6 +8265,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (146)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -8119,6 +8492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622801641287 stripped
@@ -8196,6 +8573,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (147)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -8275,6 +8656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (78)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622845581489 stripped
@@ -8352,6 +8737,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (142)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -8431,6 +8820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621528626533 stripped
@@ -8508,6 +8901,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -8665,6 +9062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (119)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621540586701 stripped
@@ -8743,6 +9144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621596971127 stripped
@@ -8820,6 +9225,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (124)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -8976,6 +9385,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (99)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -9203,6 +9616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621616272190 stripped
@@ -9280,6 +9697,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -9359,6 +9780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (63)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621618429852 stripped
@@ -9437,6 +9862,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (92)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621622119604 stripped
@@ -9502,6 +9931,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -9580,6 +10013,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (110)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -9737,6 +10174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621425729459 stripped
@@ -9814,6 +10255,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -9893,6 +10338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (117)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621423420204 stripped
@@ -9971,6 +10420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621460752325 stripped
@@ -10036,6 +10489,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -10114,6 +10571,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (80)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -10344,6 +10805,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -10579,6 +11044,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621505889397 stripped
@@ -10656,6 +11125,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -10735,6 +11208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (106)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621269569613 stripped
@@ -10812,6 +11289,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (95)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -10891,6 +11372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (105)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621304062411 stripped
@@ -10968,6 +11453,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -11125,6 +11614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621317564314 stripped
@@ -11203,6 +11696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621358298799 stripped
@@ -11280,6 +11777,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (135)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -11437,6 +11938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621346570311 stripped
@@ -11514,6 +12019,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -11671,6 +12180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (132)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621136781142 stripped
@@ -11827,6 +12340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (139)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621136702245 stripped
@@ -11905,6 +12422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (137)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621159495098 stripped
@@ -11982,6 +12503,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (61)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -12139,6 +12664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621147017597 stripped
@@ -12217,6 +12746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621149852958 stripped
@@ -12294,6 +12827,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -12451,6 +12988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621194794420 stripped
@@ -12607,6 +13148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (128)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621184352235 stripped
@@ -12684,6 +13229,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (129)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -12763,6 +13312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621219125428 stripped
@@ -12841,6 +13394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (113)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621220054604 stripped
@@ -12918,6 +13475,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (133)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -13075,6 +13636,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (141)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622061263196 stripped
@@ -13153,6 +13718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (114)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622098426494 stripped
@@ -13218,6 +13787,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -13453,6 +14026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622124812971 stripped
@@ -13531,6 +14108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622126962031 stripped
@@ -13596,6 +14177,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -13674,6 +14259,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (115)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -13831,6 +14420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622155785770 stripped
@@ -13987,6 +14580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621923320854 stripped
@@ -14064,6 +14661,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (149)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -14143,6 +14744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621974520467 stripped
@@ -14221,6 +14826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (103)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621956689233 stripped
@@ -14282,6 +14891,14 @@ PrefabInstance:
     - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_Name
       value: SuperPallet (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
+      propertyPath: m_TagString
+      value: SuperPallet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805292736377010499, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
@@ -14349,6 +14966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622011526931 stripped
@@ -14414,6 +15035,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -14571,6 +15196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761622013731172 stripped
@@ -14649,6 +15278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (125)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621795235858 stripped
@@ -14726,6 +15359,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (107)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -14883,6 +15520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (116)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621785662165 stripped
@@ -14960,6 +15601,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -15195,6 +15840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621811911285 stripped
@@ -15351,6 +16000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (122)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621853167331 stripped
@@ -15429,6 +16082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (118)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621895242173 stripped
@@ -15506,6 +16163,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (108)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -15741,6 +16402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (109)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621647704650 stripped
@@ -15897,6 +16562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621701016602 stripped
@@ -15974,6 +16643,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (130)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -16053,6 +16726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (96)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621707070809 stripped
@@ -16131,6 +16808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (97)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621683510155 stripped
@@ -16208,6 +16889,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -16294,6 +16979,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3700732244812935579, guid: 0f298551633bdc74699c8e02f301db22, type: 3}
   m_PrefabInstance: {fileID: 1166050150143543545}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1166050150161701953
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1166050149645348367}
+    m_Modifications:
+    - target: {fileID: 552223965817740452, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 152
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_Name
+      value: PalletSmall (98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+--- !u!4 &3653761621772947952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2493411690735373745, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+  m_PrefabInstance: {fileID: 1166050150161701953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1166050150170022909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16352,6 +17119,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -16509,6 +17280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalletSmall (111)
       objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
 --- !u!4 &3653761621748362824 stripped
@@ -16574,6 +17349,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
@@ -16652,6 +17431,10 @@ PrefabInstance:
     - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
       propertyPath: m_Name
       value: PalletSmall (77)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476512692825985361, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}
+      propertyPath: m_TagString
+      value: pallets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53019a922895d844392c0ebc6805a1fd, type: 3}

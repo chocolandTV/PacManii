@@ -131,7 +131,7 @@ public class MazeGrid : MonoBehaviour
                 // Debug.Log("PACMAN MOVE RIGHT");
                 return Vector2.right;}
         }
-        Debug.Log("OBSTACLE");
+        
         return result;
     }
     public void PrintArray()
