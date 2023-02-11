@@ -7,6 +7,10 @@ TagManager:
   - Wall
   - Frightend
   - Ghost
+  - Teleport1
+  - Teleport2
+  - pallets
+  - SuperPallet
   layers:
   - Default
   - TransparentFX

@@ -9,16 +9,22 @@ public class PacMan : MonoBehaviour
     private GameManager _gameManager;
   
     private float smooth = 5.0f;
+    private Rigidbody rb;
+    // COINS
+    public int collectedPallets{get; private set;}
+    public GameObject palletAfterEffect;
     private void Start()
     {
         mov = GetComponent<Movement>();
         _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        rb  = GetComponent<Rigidbody>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             mov.nextDirection = context.ReadValue<Vector2>();
+            
         }
     }
     void OnTriggerEnter(Collider other)
@@ -27,11 +33,29 @@ public class PacMan : MonoBehaviour
         {
             _gameManager.GameOverState = true;
         }
-        else
+        
         if (other.CompareTag("Frightend"))
         {
             other.GetComponent<Movement>().MoveFrightend();
             // ADD SCORE
+        }
+        if(other.CompareTag("Teleport1"))
+        {
+            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position+(Vector3.left*2);
+        }
+        if(other.CompareTag("Teleport2"))
+        {
+            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport1").transform.position+(Vector3.right*2);
+        }
+        if(other.CompareTag("pallets"))
+        {
+            this.SetCollectedPallets(collectedPallets+1);
+            Destroy(other.gameObject,0.0f);
+        }
+        if(other.CompareTag("SuperPallet"))
+        {
+            this.SetCollectedPallets(collectedPallets+10);
+            Destroy(other.gameObject,0.0f);
         }
     }
     private void Animate()
@@ -61,6 +85,10 @@ public class PacMan : MonoBehaviour
     private void FixedUpdate()
     {
         Animate();
+    }
+    private void SetCollectedPallets(int value)
+    {
+        collectedPallets = value;
     }
     // INPUT 
     // CHECK INPUT (position in mazegrid )

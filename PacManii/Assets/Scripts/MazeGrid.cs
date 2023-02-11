@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
 public class MazeGrid : MonoBehaviour
 {
     // GRID 21 x 21  DD: Leere Felder ( bewegung möglich)
@@ -55,51 +55,88 @@ public class MazeGrid : MonoBehaviour
         }
         PrintArray();
         
-
+    }
+    public void drawGizimos(int seconds, Vector3 position)
+    {
+        position += new Vector3((int)MazeSize/2+1,(int)MazeSize/2+1,0);
+        // DIR UP
+        if((int)position.y+1 < MazeSize)
+        {
+            if(!mazeGrid[(int)position.x,(int)position.y+1]){
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3((int)position.x-(int)MazeSize/2, (int)position.y+1-(int)MazeSize/2, -2);
+                Destroy(cube,seconds);
+            }
+        }
+        // DIR DOWN 
+        if((int)position.y-1 < MazeSize)
+        {
+            if(!mazeGrid[(int)position.x,(int)position.y-1]){
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3((int)position.x-(int)MazeSize/2, (int)position.y-1-(int)MazeSize/2, -2);
+                Destroy(cube,seconds);
+            }
+        }
+        // DIR LEFT
+        if((int)position.x-1 < MazeSize)
+        {
+            if(!mazeGrid[(int)position.x-1,(int)position.y]){
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3((int)position.x-1-(int)MazeSize/2, (int)position.y-(int)MazeSize/2, -2);
+                Destroy(cube,seconds);
+            }
+        }
+        // DIR RIGHT
+        if((int)position.x+1 < MazeSize)
+        {
+            if(!mazeGrid[(int)position.x+1,(int)position.y]){
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3((int)position.x+1-(int)MazeSize/2, (int)position.y-(int)MazeSize/2, -2);
+                Destroy(cube,seconds);
+            }
+        }
     }
     public Vector2 CheckNextMove(Vector2 dir, Vector3 position)
-    {
-        position += new Vector3(Mathf.Abs(MazeSize/2),Mathf.Abs(MazeSize/2),0);
-        Debug.Log("POSITIONOFFSET: " + position);
+    {   
+        
+        position += new Vector3((int)MazeSize/2,(int)MazeSize/2,0);
+        // Debug.Log("POSITIONOFFSET: " + position + " DirectionX: " + dir.x + " DirectionY: " + dir.y);
         Vector2 result = Vector2.zero;
         // CHECK IF DIRECTION IS UP
         if(dir.y == 1.0f && (int)position.y+1 < MazeSize)
         {
             if(mazeGrid[(int)position.x,(int)position.y+1]){
-                 Debug.Log(Vector2.up);
+                // Debug.Log("PACMAN MOVE UP");
                 return Vector2.up;}
-                else{
-                    Debug.Log("Direction is out of Bounds  = " + dir);
-                }
+                
         }
         // CHECK IF DIRECTION IS DOWN
         if(dir.y == -1.0f && (int)position.y-1 >= 0)
         {
            if(mazeGrid[(int)position.x, (int)position.y-1]){
-             Debug.Log(Vector2.down);
+            //  Debug.Log("PACMAN MOVE DOWN");
                return  Vector2.down;}
         }
         // CHECK IF DIRECTION IS LEFT
         if(dir.x == -1.0f && (int)position.x-1 >= 0) 
         {
             if(mazeGrid[(int)position.x-1,(int)position.y]){
-                 Debug.Log(Vector2.left);
+                // Debug.Log("PACMAN MOVE LEFT");
                 return Vector2.left;}
         }
         // CHECK IF DIRECTION IS RIGHT
         if(dir.x == 1.0f  && (int)position.x+1 < MazeSize)
         {
            if(mazeGrid[(int)position.x+1,(int)position.y]){
-                Debug.Log(Vector2.right);
-                return Vector2.right;}else{
-                    Debug.Log("Direction is out of Bounds  = " + dir);
-                }
+                // Debug.Log("PACMAN MOVE RIGHT");
+                return Vector2.right;}
         }
-        Debug.Log("no Input: "+ result);
+        Debug.Log("OBSTACLE");
         return result;
     }
     public void PrintArray()
     {
+        
         string result="";
         for (int y = MazeSize-1; y >=0; y--)
         {
@@ -108,6 +145,9 @@ public class MazeGrid : MonoBehaviour
                 if(mazeGrid[x,y])
                 {
                     result +="O";
+                    // CREATE PRIMITIVE
+                    //  GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    //  cube.transform.position = new Vector3(x-(int)MazeSize/2, y-(int)MazeSize/2, -4);
                 }else{
                     result +="#";
                 }
@@ -116,4 +156,5 @@ public class MazeGrid : MonoBehaviour
         }
         Debug.Log("Current Mazegrid: \n" + result);
     }
+    
 }

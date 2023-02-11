@@ -57,17 +57,26 @@ public class Movement : MonoBehaviour
     {
 
         
-        this.direction = maze.CheckNextMove(dir, this.rigidbody.position);
+        // this.direction = maze.CheckNextMove(dir, this.rigidbody.position);
+        this.direction = this.nextDirection;
         this.nextDirection = Vector2.zero;
 
 
     }
     private void Move()
     {
-        Vector2 position = this.rigidbody.position;
-        Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
-        this.rigidbody.MovePosition(position + translation);
-        
+        // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);
+        // Debug.Log("X: " + posi.x + " Y: " + posi.y);
+        maze.drawGizimos(1, this.rigidbody.position);
+        if(maze.CheckNextMove(this.direction, this.rigidbody.position) != Vector2.zero)
+        {
+            
+            Vector2 position = this.rigidbody.position;
+            // Vector2 position = new Vector2(posi.x, posi.y);
+            Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
+            this.rigidbody.MovePosition(position + translation);
+        }
+
     }
     public void MoveFrightend()
     {
