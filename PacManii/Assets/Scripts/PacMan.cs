@@ -12,12 +12,15 @@ public class PacMan : MonoBehaviour
     private Rigidbody rb;
     // COINS
     public int collectedPallets{get; private set;}
-    public GameObject palletAfterEffect;
+    public GameObject palletAfterEffectPrefab;
+    private GameObject palletAfterEffectObject;
     private void Start()
     {
         mov = GetComponent<Movement>();
         _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         rb  = GetComponent<Rigidbody>();
+        palletAfterEffectObject = Instantiate(palletAfterEffectPrefab);
+        palletAfterEffectObject.SetActive(false);
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -50,7 +53,10 @@ public class PacMan : MonoBehaviour
         if(other.CompareTag("pallets"))
         {
             this.SetCollectedPallets(collectedPallets+1);
+            palletAfterEffectObject.transform.position = other.gameObject.transform.position;
+            palletAfterEffectObject.SetActive(true);
             Destroy(other.gameObject,0.0f);
+            
         }
         if(other.CompareTag("SuperPallet"))
         {
