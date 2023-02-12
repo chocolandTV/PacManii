@@ -7,8 +7,7 @@ public class PacMan : MonoBehaviour
 {
     private Movement mov;
     private GameManager _gameManager;
-
-    private float smooth = 5.0f;
+    
     private Rigidbody rb;
     // COINS
     public int collectedPallets { get; private set; }
@@ -46,7 +45,7 @@ public class PacMan : MonoBehaviour
     {
         if (other.CompareTag("Ghost"))
         {
-            _gameManager.GameOverState = true;
+            // _gameManager.GameState = true;
         }
 
         if (other.CompareTag("Frightend"))

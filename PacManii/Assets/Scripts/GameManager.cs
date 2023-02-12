@@ -8,16 +8,18 @@ public class GameManager : MonoBehaviour
     public Transform pellets;
     public int score {get; private set;}
     public int lives {get; private set;}
-    public bool GameOverState {get;set;}
+    public int cherries {get; private set;}
+    public int secrets { get; private set;}
+    public int level {get; private set;}
+    public int pelletsRemaining {get; private set;}
+    public bool GameState {get;private set;}
    
     private void Start() {
         NewGame();
     }
     private void Update() {
-        if(this.lives <= 0)
-        {
-            NewGame();
-        }
+        // SPEED UP 
+
     }
     private void NewGame()
     {
@@ -48,7 +50,10 @@ public class GameManager : MonoBehaviour
             this.ghosts[i].gameObject.SetActive(false);
         }
         this.pacman.gameObject.SetActive(false);
+        // HUD OFF 
+        // GAMEOVER MENU ON RETRY BUTTON
     }
+    ///////// STATS SET ///////////////////////
     private void SetScore(int score)
     {
         this.score =score;
@@ -57,6 +62,23 @@ public class GameManager : MonoBehaviour
     {
         this.lives = lives;
     }
+    private void SetPallets(int pallets)
+    {
+        this.pelletsRemaining = pallets;
+    }
+    private void SetLevel(int _level)
+    {
+        this.level = _level;
+    }
+    private void SetCherries(int _cherries)
+    {
+        this.cherries = _cherries;
+    }
+    private void SetSecret(int _secret)
+    {
+        this.secrets = _secret;
+    }
+    ////////////////// STATS SET END /////////////////
     public void GhostEaten (Ghost ghost)
     {
         SetScore(this.score + ghost.points);
