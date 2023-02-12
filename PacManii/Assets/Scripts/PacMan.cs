@@ -10,7 +10,7 @@ public class PacMan : MonoBehaviour
     
     private Rigidbody rb;
     // COINS
-    public int collectedPallets { get; private set; }
+    // public int collectedPallets { get; private set; }
     public GameObject palletAfterEffectPrefab;
     private GameObject palletAfterEffectObject;
 
@@ -45,7 +45,7 @@ public class PacMan : MonoBehaviour
     {
         if (other.CompareTag("Ghost"))
         {
-            // _gameManager.GameState = true;
+            _gameManager.LoseLive();
         }
 
         if (other.CompareTag("Frightend"))
@@ -63,7 +63,7 @@ public class PacMan : MonoBehaviour
         }
         if (other.CompareTag("pallets"))
         {
-            this.SetCollectedPallets(collectedPallets + 1);
+            _gameManager.CollectPellet();
             palletAfterEffectObject.transform.position = other.transform.position;
             palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
             Destroy(other.gameObject, 0.0f);
@@ -71,7 +71,7 @@ public class PacMan : MonoBehaviour
         }
         if (other.CompareTag("SuperPallet"))
         {
-            this.SetCollectedPallets(collectedPallets + 10);
+            _gameManager.CollectPellet();
             palletAfterEffectObject.transform.position = other.gameObject.transform.position;
             palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
             Destroy(other.gameObject, 0.0f);
@@ -108,10 +108,10 @@ public class PacMan : MonoBehaviour
     // {
     //     Animate();
     // }
-    private void SetCollectedPallets(int value)
-    {
-        collectedPallets = value;
-    }
+    // private void SetCollectedPallets(int value)
+    // {
+    //     collectedPallets = value;
+    // }
     // INPUT 
     // CHECK INPUT (position in mazegrid )
     // A 

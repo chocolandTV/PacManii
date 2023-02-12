@@ -23,29 +23,27 @@ public class Ghost : MonoBehaviour
     */
     public int points = 200;
     public GameObject GhostEnemy {get;private set;}
-    private enum mode
+    
+    public enum Name
     {
-        CHASE,
-        SCATTER,
-        EATEN,
-        FRIGHTENED
-    }
-    private enum Direction
-    {
-        Left,
-        Right,
-        Up,
-        Down
+        Inky,// Cyan
+        Blinky, //Red
+        Pinky,//Pink
+        Clyde // Orange FFB751
     }
     // Start is called before the first frame update
     void Start()
     {
         // GHOST INIT + STATE SET
+        // SET MATERIAL COLOR
+        // START BEHAVIOUR
     }
 
     // Update is called once per frame
     void Update()
     {
+        // CALC DIST² x² + y²
+        // CHANGE DIR WITH LESS DIST²
         
     }
     private void EnemyStateChase()

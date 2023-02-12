@@ -6,25 +6,43 @@ public class GameManager : MonoBehaviour
     public GameObject[]ghosts;
     public GameObject pacman;
     public Transform pellets;
+    [SerializeField] private GameObject hudObject;
+    private HUD hudScript;
+    // STATS AND COLLECTABLES
     public int score {get; private set;}
     public int lives {get; private set;}
     public int cherries {get; private set;}
     public int secrets { get; private set;}
     public int level {get; private set;}
     public int pelletsRemaining {get; private set;}
+    public int paciiStatus {get;private set;}
+
+    // END STATS AND COLLECTABLE 
     public bool GameState {get;private set;}
    
     private void Start() {
+        hudScript = hudObject.GetComponent<HUD>();
+        
         NewGame();
     }
     private void Update() {
         // SPEED UP 
 
     }
+    private void GetAllPallets()
+    {
+        this.pelletsRemaining = GameObject.FindGameObjectsWithTag("pallets").Length +
+         GameObject.FindGameObjectsWithTag("SuperPallet").Length;
+    }
     private void NewGame()
     {
         SetScore(0);
         SetLives(3);
+        SetCherries(9);
+        SetLevel(1);
+        GetAllPallets();
+        SetSecret(0);
+        SetPaciiStatus(1);
         NewRound();
     }
     private void NewRound()
@@ -55,29 +73,42 @@ public class GameManager : MonoBehaviour
     }
     ///////// STATS SET ///////////////////////
     #region SETSTATS
+    
     private void SetScore(int score)
     {
         this.score =score;
+        hudScript.OnValueChanged(score, HUD.TextType.score);
     }
     private void SetLives(int lives)
     {
         this.lives = lives;
+        hudScript.OnValueChanged(score, HUD.TextType.score);
     }
-    private void SetPallets(int pallets)
+    private void SetPellets(int pallets)
     {
         this.pelletsRemaining = pallets;
+        hudScript.OnValueChanged(pallets, HUD.TextType.pellet);
     }
     private void SetLevel(int _level)
     {
         this.level = _level;
+        hudScript.OnValueChanged(_level, HUD.TextType.level);
     }
     private void SetCherries(int _cherries)
     {
         this.cherries = _cherries;
+        hudScript.OnValueChanged(_cherries, HUD.TextType.cherry);
     }
     private void SetSecret(int _secret)
     {
         this.secrets = _secret;
+        hudScript.OnValueChanged(_secret, HUD.TextType.secret);
+    }
+    private void SetPaciiStatus(int _status)
+    {
+        this.paciiStatus = _status;
+        Time.timeScale = _status;
+        hudScript.OnValueChanged(_status, HUD.TextType.paciiStatus);
     }
     #endregion SETSTATS
     ////////////////// STATS SET END /////////////////
@@ -85,10 +116,10 @@ public class GameManager : MonoBehaviour
     {
         SetScore(this.score + ghost.points);
     }
-    public void PacManEaten()
+    public void LoseLive()
     {
         this.pacman.gameObject.SetActive(false);
-
+        this.pacman.gameObject.transform.position = this.pacman.gameObject.GetComponent<Movement>().startingPosition;
         SetLives(this.lives -1);
 
         if(this.lives > 0 )
@@ -97,5 +128,9 @@ public class GameManager : MonoBehaviour
         }else{
             GameOver();
         }
+    }
+    public void CollectPellet()
+    {
+        SetPellets(this.pelletsRemaining -1);
     }
 }
