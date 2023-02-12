@@ -1,12 +1,15 @@
 
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject[]ghosts;
     public GameObject pacman;
     public Transform pellets;
     [SerializeField] private GameObject hudObject;
+    [SerializeField] private GameObject gameoverObject;
+    [SerializeField] private GameObject menuObject;
+    
     private HUD hudScript;
     // STATS AND COLLECTABLES
     public int score {get; private set;}
@@ -16,19 +19,22 @@ public class GameManager : MonoBehaviour
     public int level {get; private set;}
     public int pelletsRemaining {get; private set;}
     public int paciiStatus {get;private set;}
-
+    public GameState currentState;
     // END STATS AND COLLECTABLE 
-    public bool GameState {get;private set;}
+    public enum GameState
+    {
+        Menu,
+        Paused,
+        Running,
+        GameOver
+    }
    
     private void Start() {
         hudScript = hudObject.GetComponent<HUD>();
-        
-        NewGame();
+        Time.timeScale = 1;
+        //NewGame();
     }
-    private void Update() {
-        // SPEED UP 
-
-    }
+    
     private void GetAllPallets()
     {
         this.pelletsRemaining = GameObject.FindGameObjectsWithTag("pallets").Length +
@@ -36,6 +42,7 @@ public class GameManager : MonoBehaviour
     }
     private void NewGame()
     {
+        menuObject.SetActive(false);
         SetScore(0);
         SetLives(3);
         SetCherries(9);
@@ -44,6 +51,8 @@ public class GameManager : MonoBehaviour
         SetSecret(0);
         SetPaciiStatus(1);
         NewRound();
+        hudObject.SetActive(true);
+
     }
     private void NewRound()
     {
@@ -64,14 +73,18 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
+        currentState = GameState.GameOver;
         for (int i = 0; i < this.ghosts.Length; i++)
         {
             this.ghosts[i].gameObject.SetActive(false);
         }
         this.pacman.gameObject.SetActive(false);
-        // HUD OFF 
+        // GAMESPEED 0
         // GAMEOVER MENU ON RETRY BUTTON
+        Time.timeScale = 0;
+        gameoverObject.SetActive(true);
     }
+    
     ///////// STATS SET ///////////////////////
     #region SETSTATS
     
@@ -113,6 +126,20 @@ public class GameManager : MonoBehaviour
     }
     #endregion SETSTATS
     ////////////////// STATS SET END /////////////////
+
+    /////////////// PUBLIC CALLS //////////////////
+    public void GameStart()
+    {
+        // UI ON AND MENU OFF
+        NewGame();
+    }
+    public void GameRestart()
+    {
+        if(currentState == GameState.GameOver)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
     public void GhostEaten (Ghost ghost)
     {
         SetScore(this.score + ghost.points);
@@ -135,5 +162,6 @@ public class GameManager : MonoBehaviour
     public void CollectPellet()
     {
         SetPellets(this.pelletsRemaining -1);
+        //ADD SCORE FOR PELLET
     }
 }
