@@ -56,11 +56,11 @@ public class PacMan : MonoBehaviour
         }
         if (other.CompareTag("Teleport1"))
         {
-            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position + (Vector3.left * 2);
+            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position + (Vector3.left * 1);
         }
         if (other.CompareTag("Teleport2"))
         {
-            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport1").transform.position + (Vector3.right * 2);
+            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport1").transform.position + (Vector3.right * 1);
         }
         if (other.CompareTag("pallets"))
         {
@@ -78,8 +78,8 @@ public class PacMan : MonoBehaviour
             Destroy(other.gameObject, 0.0f);
         }
     }
-    private void Animate(Vector2 dir)
-    {
+    // private void Animate(Vector2 dir)
+    // {
         // this.transform.rotation = Quaternion.LookRotation (dir);
         // // Vector3 target = new Vector3 (0f,0f,0f);
         // Quaternion target = Quaternion.Euler(0.0f,180.0f,0.0f);
@@ -104,7 +104,7 @@ public class PacMan : MonoBehaviour
         // }
         // this.gameObject.transform.rotation=target;
         //this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-    }
+    // }
     // private void FixedUpdate()
     // {
     //     Animate();
