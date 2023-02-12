@@ -17,4 +17,9 @@ public class Button : MonoBehaviour
     {
         gameManager.GameStart();
     }
+    public void OnButtonEnterHMenuTurningSpeed()
+    {
+        Debug.Log("increased Turning Speed: " + gameManager.MenuTurningSpeed);
+        gameManager.MenuTurningSpeed *= 2.0f;
+    }
 }

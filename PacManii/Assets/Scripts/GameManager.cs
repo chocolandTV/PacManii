@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int level {get; private set;}
     public int pelletsRemaining {get; private set;}
     public int paciiStatus {get;private set;}
+    public float MenuTurningSpeed {get;set;} = 10.0f;
     public GameState currentState;
     // END STATS AND COLLECTABLE 
     public enum GameState
