@@ -29,6 +29,16 @@ public class HUD : MonoBehaviour
         paciiStatus
     }
     // Update is called once per frame
+    private string PacManStatusText(int value)
+    {
+        if(value ==1)
+            return "Normal";
+        if(value ==2)
+            return "Excited";
+        if(value  == 3)
+            return "Frightend";
+        return "Normal";
+    }
     public void OnValueChanged(int value, TextType type)
     {
         switch (type)
@@ -52,7 +62,7 @@ public class HUD : MonoBehaviour
                 pelletValueText.text = gameManager.pelletsRemaining.ToString();
                 break;
             case TextType.paciiStatus:
-                PaciiStatusValueText.text = gameManager.paciiStatus.ToString();
+                PaciiStatusValueText.text = PacManStatusText( gameManager.paciiStatus);
                 break;
             default: 
 

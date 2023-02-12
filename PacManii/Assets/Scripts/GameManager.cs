@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
             this.ghosts[i].gameObject.SetActive(true);
         }
         this.pacman.gameObject.SetActive(true);
+        this.pacman.GetComponent<DyingAnim>().OnStartAnimate();
     }
     private void GameOver()
     {
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
     private void SetLives(int lives)
     {
         this.lives = lives;
-        hudScript.OnValueChanged(score, HUD.TextType.score);
+        hudScript.OnValueChanged(lives, HUD.TextType.live);
     }
     private void SetPellets(int pallets)
     {
@@ -122,9 +123,11 @@ public class GameManager : MonoBehaviour
         this.pacman.gameObject.transform.position = this.pacman.gameObject.GetComponent<Movement>().startingPosition;
         SetLives(this.lives -1);
 
+        // START ANIMATION DYING!
+        this.pacman.GetComponent<DyingAnim>().OnDeathAnimate();
         if(this.lives > 0 )
         {
-            Invoke(nameof(ResetState), 3.0f);
+            Invoke(nameof(ResetState), 2.0f);
         }else{
             GameOver();
         }
