@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         // GAMEOVER MENU ON RETRY BUTTON
     }
     ///////// STATS SET ///////////////////////
+    #region SETSTATS
     private void SetScore(int score)
     {
         this.score =score;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         this.secrets = _secret;
     }
+    #endregion SETSTATS
     ////////////////// STATS SET END /////////////////
     public void GhostEaten (Ghost ghost)
     {
