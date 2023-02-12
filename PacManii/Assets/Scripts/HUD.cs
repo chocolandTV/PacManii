@@ -16,7 +16,7 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameManager>();
+        gameManager= gameManagerObject.GetComponent<GameManager>();
     }
     public enum TextType
     {
