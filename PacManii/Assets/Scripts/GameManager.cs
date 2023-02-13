@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int level {get; private set;}
     public int pelletsRemaining {get; private set;}
     public int paciiStatus {get;private set;}
-    public float MenuTurningSpeed {get;set;} = 10.0f;
+    public float MenuTurningSpeed {get;set;} = 0.5f;
     public GameState currentState;
     // END STATS AND COLLECTABLE 
     public enum GameState
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         SetPaciiStatus(1);
         NewRound();
         hudObject.SetActive(true);
-
+        currentState = GameState.Running;
     }
     private void NewRound()
     {
@@ -138,8 +138,14 @@ public class GameManager : MonoBehaviour
     {
         if(currentState == GameState.GameOver)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
+    }
+    public void GameAbortToMenu()
+    {
+        currentState = GameState.Menu;
+        hudObject.SetActive(false);
+        menuObject.SetActive(true);
     }
     public void GhostEaten (Ghost ghost)
     {
