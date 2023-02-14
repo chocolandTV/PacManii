@@ -765,6 +765,7 @@ GameObject:
   - component: {fileID: 7160259693094195864}
   - component: {fileID: 2346175110020545449}
   - component: {fileID: 5213237866045424993}
+  - component: {fileID: 7434989924364733843}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -804,7 +805,7 @@ Canvas:
   m_GameObject: {fileID: 2500277345431521879}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -856,6 +857,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7434989924364733843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500277345431521879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdec623e04535745813f609638d2462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liveValueText: {fileID: 6630503656246174693}
+  cherryValueText: {fileID: 5165629439375882263}
+  secretValueText: {fileID: 7116141471583277009}
+  scoreValueText: {fileID: 5088139761973085762}
+  levelValueText: {fileID: 7983040844340284457}
+  pelletValueText: {fileID: 6656201531736385482}
+  PaciiStatusValueText: {fileID: 7034397773800892733}
+  gameManagerObject: {fileID: 0}
 --- !u!1 &3937508499921115868
 GameObject:
   m_ObjectHideFlags: 0

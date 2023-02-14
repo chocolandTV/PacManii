@@ -47,3 +47,7 @@ MonoBehaviour:
   ghosts: []
   pacman: {fileID: 0}
   pellets: {fileID: 0}
+  hudObject: {fileID: 0}
+  gameoverObject: {fileID: 0}
+  menuObject: {fileID: 1966979131470031401, guid: 2eede842d1e613e409f15111eb2dcf21, type: 3}
+  currentState: 2

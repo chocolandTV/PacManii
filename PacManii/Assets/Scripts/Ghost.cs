@@ -21,9 +21,10 @@ public class Ghost : MonoBehaviour
     ################################################ POSITION ################################################
     PACMAN  [40, 38] REDGHOST [48,38], ROSEGHOST [44,42] TURKY[38,52] ORANGEGHOST [50,46]
     */
-    public int points = 200;
+    public int points = 200; // change on state
     public GameObject GhostEnemy {get;private set;}
-    
+    [SerializeField] private Transform pacManPos;
+    private Movement movement;
     public enum Name
     {
         Inky,// Cyan
@@ -31,9 +32,11 @@ public class Ghost : MonoBehaviour
         Pinky,//Pink
         Clyde // Orange FFB751
     }
+    public Name ghostName;
     // Start is called before the first frame update
     void Start()
     {
+        movement = GetComponent<Movement>();
         // GHOST INIT + STATE SET
         // SET MATERIAL COLOR
         // START BEHAVIOUR
@@ -46,6 +49,20 @@ public class Ghost : MonoBehaviour
         // CHANGE DIR WITH LESS DIST²
         
     }
+
+    //////////////// TARGETING AND POSITION CALCULATION //////////////////
+    private void NextTarget()
+    {
+        // NAME CHANGING POSITION
+        // PACMAN POSITION
+    }
+    private Vector2 DistanceTwo(Vector3 vector)
+    {
+        //GRID TO ENEMY 
+        return Vector2.zero; // NEXT DIRECTION
+    }
+
+//////////////// TARGETING AND POSITION CALCULATION //////////////////
     private void EnemyStateChase()
     {
         // MAIN STATE

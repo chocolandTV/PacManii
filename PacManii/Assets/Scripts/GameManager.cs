@@ -33,17 +33,20 @@ public class GameManager : MonoBehaviour
     private void Start() {
         hudScript = hudObject.GetComponent<HUD>();
         Time.timeScale = 1;
-        //NewGame();
+        NewGame();
     }
     
     private void GetAllPallets()
     {
         this.pelletsRemaining = GameObject.FindGameObjectsWithTag("pallets").Length +
          GameObject.FindGameObjectsWithTag("SuperPallet").Length;
+         Debug.Log("Found :" + this.pelletsRemaining + " PELLETS");
     }
     private void NewGame()
     {
+        currentState = GameState.Running;
         menuObject.SetActive(false);
+        hudObject.SetActive(true);
         SetScore(0);
         SetLives(3);
         SetCherries(9);
@@ -52,14 +55,14 @@ public class GameManager : MonoBehaviour
         SetSecret(0);
         SetPaciiStatus(1);
         NewRound();
-        hudObject.SetActive(true);
-        currentState = GameState.Running;
+        
     }
     private void NewRound()
     {
         foreach (Transform pellet in this.pellets)
         {
             pellet.gameObject.SetActive(true);
+            // RESPAWN PALLET OBJECT
         }
        ResetState();
     }
@@ -74,16 +77,20 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
-        currentState = GameState.GameOver;
-        for (int i = 0; i < this.ghosts.Length; i++)
+        if(GameState.Running == currentState)
         {
-            this.ghosts[i].gameObject.SetActive(false);
+            
+            currentState = GameState.GameOver;
+            for (int i = 0; i < this.ghosts.Length; i++)
+            {
+                this.ghosts[i].gameObject.SetActive(false);
+            }
+            this.pacman.gameObject.SetActive(false);
+            // GAMESPEED 0
+            // GAMEOVER MENU ON RETRY BUTTON
+            Time.timeScale = 0;
+            gameoverObject.SetActive(true);
         }
-        this.pacman.gameObject.SetActive(false);
-        // GAMESPEED 0
-        // GAMEOVER MENU ON RETRY BUTTON
-        Time.timeScale = 0;
-        gameoverObject.SetActive(true);
     }
     
     ///////// STATS SET ///////////////////////

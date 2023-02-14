@@ -21,13 +21,13 @@ public class MazeGrid : MonoBehaviour
 
 
     public bool[,] mazeGrid { get; private set; }
-    [SerializeField] public GameObject level;
+    private GameObject level;
     public int MazeSize = 21;
     private Vector3 offset;
 
     private void Start()
     {
-
+        level = this.gameObject;
         offset = new Vector3(-(MazeSize / 2), -(MazeSize / 2), 0);
         mazeGrid = new bool[MazeSize, MazeSize];
         // ARRAYS VON UNTEN NACH OBEN DURCHMAPEN //

@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2f1340fb2f8e46a4f85c0f26ba825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1166050148283006466}
   MazeSize: 21
 --- !u!1 &1166050148476678535
 GameObject:
@@ -4924,7 +4923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_TagString
-      value: pallets
+      value: SuperPallet
       objectReference: {fileID: 0}
     - target: {fileID: 8805292736377010499, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_IsTrigger
@@ -6114,7 +6113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053009068272872234, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_TagString
-      value: pallets
+      value: SuperPallet
       objectReference: {fileID: 0}
     - target: {fileID: 8805292736377010499, guid: 3315da2523b50084fa484cacd47f7376, type: 3}
       propertyPath: m_IsTrigger
@@ -10671,6 +10670,10 @@ PrefabInstance:
     - target: {fileID: 836331803288230793, guid: 9b3017975ec785e429be9b933577816c, type: 3}
       propertyPath: m_Name
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444080269400436438, guid: 9b3017975ec785e429be9b933577816c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1444080269400436438, guid: 9b3017975ec785e429be9b933577816c, type: 3}
       propertyPath: m_CastShadows

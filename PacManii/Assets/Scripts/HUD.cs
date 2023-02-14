@@ -44,25 +44,25 @@ public class HUD : MonoBehaviour
         switch (type)
         {
             case TextType.live:
-                liveValueText.text = gameManager.lives.ToString();
+                liveValueText.text = value.ToString();
                 break;
             case TextType.cherry:
-                cherryValueText.text = gameManager.cherries.ToString();
+                cherryValueText.text = value.ToString();
                 break;
             case TextType.secret:
-                secretValueText.text = gameManager.secrets.ToString();
+                secretValueText.text = value.ToString();
                 break;
             case TextType.score:
-                scoreValueText.text = gameManager.score.ToString();
+                scoreValueText.text = value.ToString();
                 break;
             case TextType.level:
-                levelValueText.text = gameManager.level.ToString();
+                levelValueText.text = value.ToString();
                 break;
             case TextType.pellet:
-                pelletValueText.text = gameManager.pelletsRemaining.ToString();
+                pelletValueText.text = value.ToString();
                 break;
             case TextType.paciiStatus:
-                PaciiStatusValueText.text = PacManStatusText( gameManager.paciiStatus);
+                PaciiStatusValueText.text = PacManStatusText(value);
                 break;
             default: 
 
