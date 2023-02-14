@@ -100,6 +100,12 @@ public class MazeGrid : MonoBehaviour
     //         }
     //     }
     // }
+    public Vector2 GridPosition(Vector3 pos)
+    {
+        Vector3 Gridposition = Vector3Int.RoundToInt(pos) +
+         new Vector3(Mathf.RoundToInt(MazeSize / 2), Mathf.RoundToInt(MazeSize / 2), 0);
+         return new Vector2(Gridposition.x,Gridposition.y);
+    }
     public bool CheckIfDirValid(Vector2 dir, Vector3 position)
     {
         Vector3 roundPos = Vector3Int.RoundToInt(position);

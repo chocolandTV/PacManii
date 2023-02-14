@@ -32,7 +32,14 @@ public class Ghost : MonoBehaviour
         Pinky,//Pink
         Clyde // Orange FFB751
     }
+    private enum GhostState
+    {
+        SCATTER,
+        CHASE,
+        FRIGHTENED
+    }
     public Name ghostName;
+    private GhostState ghostState;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,40 +50,59 @@ public class Ghost : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // CALC DIST² x² + y²
         // CHANGE DIR WITH LESS DIST²
+        SwitchState();
+        ChangeDir();
         
     }
+    private void SwitchState()
+    {
 
-    //////////////// TARGETING AND POSITION CALCULATION //////////////////
-    private void NextTarget()
-    {
-        // NAME CHANGING POSITION
-        // PACMAN POSITION
     }
-    private Vector2 DistanceTwo(Vector3 vector)
+    private void ChangeDir()
     {
-        //GRID TO ENEMY 
-        return Vector2.zero; // NEXT DIRECTION
+        Debug.Log(movement.GridPosition());
+        // CHECK EVERY DIRECTION WITH PACMAN POS 
+        // NEXT DIRECTION = CALC DIRECTION
+    }
+    private Vector2 Target()
+    {
+        // STATE 
+        // NAME DIFFERENT
+        return Vector2.zero;
+    }
+    //////////////// TARGETING AND POSITION CALCULATION //////////////////
+    private Vector2 ShortestDistance()
+    {
+        // CHECK ALL POSSIBLE DIRECTIONS  mov.nextDirection
+        // CHECK DISTANSTE² FOREACH DIRECTION
+        // RETURN SHORTEST
+        return Vector2.zero;
+    }
+    public int Distance(Vector3 pacManPos, Vector2 direction)
+    {
+        //LINEAR CALCULATION DIST² =  x² + y² ( 8² + 2²)  = 68
+        return 0;
     }
 
 //////////////// TARGETING AND POSITION CALCULATION //////////////////
-    private void EnemyStateChase()
+    private void GhostChase()
     {
         // MAIN STATE
     }
-    private void EnemyStateScatter()
+    private void GhostScatter()
     {
         //TIMEEVENT AFTER CHASE
     }
-    private void EnemyStateEaten()
+    private void GhostEaten()
     {
         //IF PACMAN HIT WHILE FRIGHTENED STATE
         // new Target GhostHouse, when reached turn back to ChaseMode
     }
-    private void EnemyStateFrightened()
+    private void GhostFrightened()
     {
         // IF PACMAN EATS POWER PELLET
         // TURN 180° 

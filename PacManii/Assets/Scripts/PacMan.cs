@@ -50,7 +50,7 @@ public class PacMan : MonoBehaviour
 
         if (other.CompareTag("Frightend"))
         {
-            other.GetComponent<Movement>().MoveFrightend();
+            // other.GetComponent<Movement>().MoveFrightend();
             // ADD SCORE
         }
         if (other.CompareTag("Teleport1"))

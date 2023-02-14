@@ -63,6 +63,10 @@ public class Movement : MonoBehaviour
 
 
     }
+    public Vector2 GridPosition()
+    {
+        return maze.GridPosition(this.gameObject.transform.position);
+    }
     private void Move()
     {
         // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);
@@ -86,10 +90,7 @@ public class Movement : MonoBehaviour
         }
 
     }
-    public void MoveFrightend()
-    {
-
-    }
+    
     private void OnDrawGizmos() {
         if(_drawGizmos)
         {

@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         this.pelletsRemaining = GameObject.FindGameObjectsWithTag("pallets").Length +
          GameObject.FindGameObjectsWithTag("SuperPallet").Length;
          Debug.Log("Found :" + this.pelletsRemaining + " PELLETS");
+         SetPellets(this.pelletsRemaining);
     }
     private void NewGame()
     {
