@@ -3,23 +3,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    public GameObject[]ghosts;
+    public GameObject[] ghosts;
     public GameObject pacman;
     public Transform pellets;
     [SerializeField] private GameObject hudObject;
     [SerializeField] private GameObject gameoverObject;
     [SerializeField] private GameObject menuObject;
-    
+   
     private HUD hudScript;
     // STATS AND COLLECTABLES
-    public int score {get; private set;}
-    public int lives {get; private set;}
-    public int cherries {get; private set;}
-    public int secrets { get; private set;}
-    public int level {get; private set;}
-    public int pelletsRemaining {get; private set;}
-    public int paciiStatus {get;private set;}
-    public float MenuTurningSpeed {get;set;} = 0.5f;
+    public int score { get; private set; }
+    public int lives { get; private set; }
+    public int cherries { get; private set; }
+    public int secrets { get; private set; }
+    public int level { get; private set; }
+    public int pelletsRemaining { get; private set; }
+    public int paciiStatus { get; private set; }
+    public float MenuTurningSpeed { get; set; } = 0.5f;
+    // SETTINGS VARIABLES
+    public float soundFXVolume { get; set; } = 40.0f;
+    public float musicVolume { get; set; } = 40.0f;
     public GameState currentState;
     // END STATS AND COLLECTABLE 
     public enum GameState
@@ -29,19 +32,24 @@ public class GameManager : MonoBehaviour
         Running,
         GameOver
     }
-   
-    private void Start() {
-        hudScript = hudObject.GetComponent<HUD>();
-        Time.timeScale = 1;
-        NewGame();
+
+    private void Start()
+    {
+
+        if (currentState == GameState.Running)
+        {
+            hudScript = hudObject.GetComponent<HUD>();
+            Time.timeScale = 1;
+            NewGame();
+        }
     }
-    
+
     private void GetAllPallets()
     {
         this.pelletsRemaining = GameObject.FindGameObjectsWithTag("pallets").Length +
          GameObject.FindGameObjectsWithTag("SuperPallet").Length;
-         Debug.Log("Found :" + this.pelletsRemaining + " PELLETS");
-         SetPellets(this.pelletsRemaining);
+        Debug.Log("Found :" + this.pelletsRemaining + " PELLETS");
+        SetPellets(this.pelletsRemaining);
     }
     private void NewGame()
     {
@@ -56,7 +64,7 @@ public class GameManager : MonoBehaviour
         SetSecret(0);
         SetPaciiStatus(1);
         NewRound();
-        
+
     }
     private void NewRound()
     {
@@ -65,7 +73,24 @@ public class GameManager : MonoBehaviour
             pellet.gameObject.SetActive(true);
             // RESPAWN PALLET OBJECT
         }
-       ResetState();
+        ResetState();
+    }
+    public void Resume()
+    {
+        if(currentState == GameState.Paused)
+        {
+            Time.timeScale =paciiStatus;
+            currentState = GameState.Running;
+        }
+    }
+    public void OnGameStatePaused()
+    {
+        if(currentState == GameState.Running)
+        {
+            Time.timeScale =  0;
+            currentState = GameState.Paused;
+            this.gameObject.GetComponent<Button>().OnButtonEnterPaused();
+        }
     }
     private void ResetState()
     {
@@ -78,9 +103,9 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
-        if(GameState.Running == currentState)
+        if (GameState.Running == currentState)
         {
-            
+
             currentState = GameState.GameOver;
             for (int i = 0; i < this.ghosts.Length; i++)
             {
@@ -93,13 +118,13 @@ public class GameManager : MonoBehaviour
             gameoverObject.SetActive(true);
         }
     }
-    
+
     ///////// STATS SET ///////////////////////
     #region SETSTATS
-    
+
     private void SetScore(int score)
     {
-        this.score =score;
+        this.score = score;
         hudScript.OnValueChanged(score, HUD.TextType.score);
     }
     private void SetLives(int lives)
@@ -144,7 +169,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameRestart()
     {
-        if(currentState == GameState.GameOver)
+        if (currentState == GameState.GameOver)
         {
             SceneManager.LoadScene(1);
         }
@@ -155,7 +180,7 @@ public class GameManager : MonoBehaviour
         hudObject.SetActive(false);
         menuObject.SetActive(true);
     }
-    public void GhostEaten (Ghost ghost)
+    public void GhostEaten(Ghost ghost)
     {
         SetScore(this.score + ghost.points);
     }
@@ -163,20 +188,22 @@ public class GameManager : MonoBehaviour
     {
         this.pacman.gameObject.SetActive(false);
         this.pacman.gameObject.transform.position = this.pacman.gameObject.GetComponent<Movement>().startingPosition;
-        SetLives(this.lives -1);
+        SetLives(this.lives - 1);
 
         // START ANIMATION DYING!
         this.pacman.GetComponent<DyingAnim>().OnDeathAnimate();
-        if(this.lives > 0 )
+        if (this.lives > 0)
         {
             Invoke(nameof(ResetState), 2.0f);
-        }else{
+        }
+        else
+        {
             GameOver();
         }
     }
     public void CollectPellet()
     {
-        SetPellets(this.pelletsRemaining -1);
+        SetPellets(this.pelletsRemaining - 1);
         //ADD SCORE FOR PELLET
     }
 }

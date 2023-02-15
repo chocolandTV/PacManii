@@ -11,11 +11,12 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelValueText;
     [SerializeField] private TextMeshProUGUI pelletValueText;
     [SerializeField] private TextMeshProUGUI PaciiStatusValueText;
-    [SerializeField] private GameObject gameManagerObject;
+    private GameObject gameManagerObject;
     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        gameManagerObject = GameObject.FindGameObjectWithTag("GameController");
         gameManager= gameManagerObject.GetComponent<GameManager>();
     }
     public enum TextType

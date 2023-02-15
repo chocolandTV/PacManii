@@ -876,7 +876,6 @@ MonoBehaviour:
   levelValueText: {fileID: 7983040844340284457}
   pelletValueText: {fileID: 6656201531736385482}
   PaciiStatusValueText: {fileID: 7034397773800892733}
-  gameManagerObject: {fileID: 0}
 --- !u!1 &3937508499921115868
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,13 @@ public class PacMan : MonoBehaviour
 
         }
     }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            _gameManager.OnGameStatePaused();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ghost"))
@@ -55,11 +62,11 @@ public class PacMan : MonoBehaviour
         }
         if (other.CompareTag("Teleport1"))
         {
-            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position + (Vector3.left * 1);
+            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position + (Vector3.left * 2);
         }
         if (other.CompareTag("Teleport2"))
         {
-            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport1").transform.position + (Vector3.right * 1);
+            rb.transform.position = GameObject.FindGameObjectWithTag("Teleport1").transform.position + (Vector3.right * 2);
         }
         if (other.CompareTag("pallets"))
         {
