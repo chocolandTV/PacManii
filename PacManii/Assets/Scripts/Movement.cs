@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     public Vector2 direction { get; private set; }
     public Vector2 nextDirection { get; set; }
     public Vector3 startingPosition { get; private set; }
-    public GameObject mazeObject;
+    // public GameObject mazeObject;
     private MazeGrid maze;
     [field: SerializeField] private bool _drawGizmos= false;
 
@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     }
     private void Start()
     {
-        maze = mazeObject.GetComponent<MazeGrid>();
+        maze = FindObjectOfType<MazeGrid>();
         // INIT PLAYER / GHOST SET POSITION   
         ResetState();
     }
@@ -63,6 +63,7 @@ public class Movement : MonoBehaviour
 
 
     }
+    
     public Vector2 GridPosition()
     {
         return maze.GridPosition(this.gameObject.transform.position);
@@ -88,6 +89,7 @@ public class Movement : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, Mathf.RoundToInt(transform.position.y), transform.position.z);
             }
+            
         }
 
     }

@@ -81,6 +81,7 @@ public class PacMan : MonoBehaviour
             _gameManager.CollectPellet();
             palletAfterEffectObject.transform.position = other.gameObject.transform.position;
             palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
+            // FRIGHENED EFFECT
             Destroy(other.gameObject, 0.0f);
         }
 

@@ -24,10 +24,10 @@ public class MazeGrid : MonoBehaviour
     private GameObject level;
     public int MazeSize = 21;
     private Vector3 offset;
-    public List<Vector2> availableDirections{get; private set;}
+
     private void Start()
     {
-        this.availableDirections = new List<Vector2>();
+
         level = this.gameObject;
         offset = new Vector3(-(MazeSize / 2), -(MazeSize / 2), 0);
         mazeGrid = new bool[MazeSize, MazeSize];
@@ -61,32 +61,76 @@ public class MazeGrid : MonoBehaviour
         PrintArray();
 
     }
-    private void CheckAvailableDirection(Vector2 direction)
+
+    public Vector2[] CheckAvailableDirection(Vector3 pos)
     {
-        
+        Vector2[] result = new Vector2[4];
+        Vector2 gridpos = GridPosition(pos);
+        //////////// CAN UP /////////////
+        if (gridpos.y + 1 < MazeSize)
+        {
+            if (mazeGrid[(int)gridpos.x, (int)gridpos.y + 1])
+            {
+                result[0] = Vector2.up;
+            }
+            else { result[0] = Vector2.zero; }
+
+        }
+        ////// CAN DOWN ///////////////
+        if (gridpos.y - 1 < MazeSize)
+        {
+            if (mazeGrid[(int)gridpos.x, (int)gridpos.y - 1])
+            {
+                result[2] = Vector2.down;
+            }
+            else { result[2] = Vector2.zero; }
+
+        }
+        ////////// CAN LEFT ///////////////
+        if (gridpos.x - 1 < MazeSize)
+        {
+            if (mazeGrid[(int)gridpos.x-1, (int)gridpos.y ])
+            {
+                result[3] = Vector2.left;
+            }
+            else { result[3] = Vector2.zero; }
+
+        }
+        ////////////// CAN RIGHT ///////////////
+        if (gridpos.x + 1 < MazeSize)
+        {
+            if (mazeGrid[(int)gridpos.x+1, (int)gridpos.y])
+            {
+                result[1] = Vector2.right;
+            }
+            else { result[1] = Vector2.zero; }
+
+        }
+        return result;
     }
     public Vector2 GridPosition(Vector3 pos)
     {
         Vector3 Gridposition = Vector3Int.RoundToInt(pos) +
          new Vector3(Mathf.RoundToInt(MazeSize / 2), Mathf.RoundToInt(MazeSize / 2), 0);
-         return new Vector2(Gridposition.x,Gridposition.y);
+        return new Vector2(Gridposition.x, Gridposition.y);
     }
     public bool CheckIfDirValid(Vector2 dir, Vector3 position)
     {
         Vector3 roundPos = Vector3Int.RoundToInt(position);
         Vector3 Gridposition = roundPos +
-         new Vector3(Mathf.RoundToInt(MazeSize / 2), Mathf.RoundToInt(MazeSize / 2), 0);
+        new Vector3(Mathf.RoundToInt(MazeSize / 2), Mathf.RoundToInt(MazeSize / 2), 0);
         // Debug.Log("POSITIONOFFSET: " + position + " DirectionX: " + dir.x + " DirectionY: " + dir.y);
 
         // CHECK IF DIRECTION IS UP
         if (dir.y == 1.0f && Gridposition.y + 1 < MazeSize)
         {
-            if (mazeGrid[(int)Gridposition.x, (int)Gridposition.y + 1] )
+            if (mazeGrid[(int)Gridposition.x, (int)Gridposition.y + 1])
             {
                 // Debug.Log("PACMAN MOVE UP");
                 return true;
-            }else
-            if(position.y < roundPos.y) // IF BORDER IS NEXT
+            }
+            else
+            if (position.y < roundPos.y) // IF BORDER IS NEXT
             {
                 return true;
             }
@@ -95,12 +139,13 @@ public class MazeGrid : MonoBehaviour
         // CHECK IF DIRECTION IS DOWN
         if (dir.y == -1.0f && Gridposition.y - 1 >= 0)
         {
-            if(mazeGrid[(int)Gridposition.x, (int)Gridposition.y - 1])
+            if (mazeGrid[(int)Gridposition.x, (int)Gridposition.y - 1])
             {
                 //  Debug.Log("PACMAN MOVE DOWN");
                 return true;
-            }else
-            if(position.y > roundPos.y)// IF BORDER IS NEXT
+            }
+            else
+            if (position.y > roundPos.y)// IF BORDER IS NEXT
             {
                 return true;
             }
@@ -112,8 +157,9 @@ public class MazeGrid : MonoBehaviour
             {
                 // Debug.Log("PACMAN MOVE LEFT");
                 return true;
-            }else
-            if(position.x > roundPos.x)// IF BORDER IS NEXT
+            }
+            else
+            if (position.x > roundPos.x)// IF BORDER IS NEXT
             {
                 return true;
             }
@@ -125,8 +171,9 @@ public class MazeGrid : MonoBehaviour
             {
                 // Debug.Log("PACMAN MOVE RIGHT");
                 return true;
-            }else
-            if(position.x < roundPos.x)// IF BORDER IS NEXT
+            }
+            else
+            if (position.x < roundPos.x)// IF BORDER IS NEXT
             {
                 return true;
             }
