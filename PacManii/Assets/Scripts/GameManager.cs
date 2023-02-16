@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] ghosts;
+    public Ghost[] ghosts;
     public GameObject pacman;
     public Transform pellets;
     [SerializeField] private GameObject hudObject;
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int pelletsRemaining { get; private set; }
     public int paciiStatus { get; private set; }
     public float MenuTurningSpeed { get; set; } = 0.5f;
+    public int ghostMultiplier = 1;
     // SETTINGS VARIABLES
     public float soundFXVolume { get; set; } = 40.0f;
     public float musicVolume { get; set; } = 40.0f;
@@ -94,9 +95,10 @@ public class GameManager : MonoBehaviour
     }
     private void ResetState()
     {
+        ResetGhostMultiplier();
         for (int i = 0; i < this.ghosts.Length; i++)
         {
-            this.ghosts[i].gameObject.SetActive(true);
+            this.ghosts[i].ResetState();
         }
         this.pacman.gameObject.SetActive(true);
         this.pacman.GetComponent<DyingAnim>().OnStartAnimate();
@@ -118,7 +120,10 @@ public class GameManager : MonoBehaviour
             gameoverObject.SetActive(true);
         }
     }
+    private void ResetGhostMultiplier()
+    {
 
+    }
     ///////// STATS SET ///////////////////////
     #region SETSTATS
 
@@ -182,7 +187,26 @@ public class GameManager : MonoBehaviour
     }
     public void GhostEaten(Ghost ghost)
     {
+        int points = ghost.points * this.ghostMultiplier;
         SetScore(this.score + ghost.points);
+        this.ghostMultiplier ++;
+    }
+    public void PacmanEaten()
+    {
+        this.pacman.gameObject.SetActive(false);
+        this.pacman.gameObject.transform.position = this.pacman.gameObject.GetComponent<Movement>().startingPosition;
+        SetLives(this.lives - 1);
+
+        // START ANIMATION DYING!
+        this.pacman.GetComponent<DyingAnim>().OnDeathAnimate();
+        if (this.lives > 0)
+        {
+            Invoke(nameof(ResetState), 2.0f);
+        }
+        else
+        {
+            GameOver();
+        }
     }
     public void LoseLive()
     {

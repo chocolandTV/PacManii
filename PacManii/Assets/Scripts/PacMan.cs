@@ -83,6 +83,12 @@ public class PacMan : MonoBehaviour
             palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
             Destroy(other.gameObject, 0.0f);
         }
+
+    }
+    public void ResetState()
+    {
+        this.gameObject.SetActive(true);
+        this.mov.ResetState();
     }
     // private void Animate(Vector2 dir)
     // {

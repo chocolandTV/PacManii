@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         // INIT PLAYER / GHOST SET POSITION   
         ResetState();
     }
-    private void ResetState()
+    public void ResetState()
     {
         this.speedMultiplier = 1.0f;
         this.direction = this.startingPosition;
@@ -67,6 +67,7 @@ public class Movement : MonoBehaviour
     {
         return maze.GridPosition(this.gameObject.transform.position);
     }
+  
     private void Move()
     {
         // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);

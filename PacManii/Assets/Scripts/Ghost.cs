@@ -24,7 +24,16 @@ public class Ghost : MonoBehaviour
     public int points = 200; // change on state
     public GameObject GhostEnemy {get;private set;}
     [SerializeField] private Transform pacManPos;
-    private Movement movement;
+    //private Movement movement;
+    // NEW FIELDS
+    public Movement movement {get; private set;}
+    public GhostHome home {get ;private set;}
+    public GhostScatter scatter{get;private set;}
+    public GhostChase chase{get;private set;}
+    public GhostFrightened frightened {get;private set;}
+    public GhostBehaviour initialBehavior;
+    public Transform target;
+
     public enum Name
     {
         Inky,// Cyan
@@ -41,71 +50,48 @@ public class Ghost : MonoBehaviour
     public Name ghostName;
     private GhostState ghostState;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        movement = GetComponent<Movement>();
+        this.movement = GetComponent<Movement>();
+        this.home = GetComponent<GhostHome>();
+        this.scatter= GetComponent<GhostScatter>();
+        this.chase = GetComponent<GhostChase>();
+        this.frightened = GetComponent<GhostFrightened>();
         // GHOST INIT + STATE SET
         // SET MATERIAL COLOR
         // START BEHAVIOUR
     }
+    private void Start() {
+        ResetState();
+    }
+    public void ResetState()
+    {
+        this.gameObject.SetActive(true);
+        this.movement.ResetState();
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        // CALC DIST² x² + y²
-        // CHANGE DIR WITH LESS DIST²
-        SwitchState();
-        ChangeDir();
-        
-    }
-    private void SwitchState()
-    {
+        this.frightened.Disable();
+        this.chase.Disable();
+        this.scatter.Enable();
 
-    }
-    private void ChangeDir()
-    {
-        Debug.Log(movement.GridPosition());
-        // CHECK EVERY DIRECTION WITH PACMAN POS 
-        // NEXT DIRECTION = CALC DIRECTION
-    }
-    private Vector2 Target()
-    {
-        // STATE 
-        // NAME DIFFERENT
-        return Vector2.zero;
-    }
-    //////////////// TARGETING AND POSITION CALCULATION //////////////////
-    private Vector2 ShortestDistance()
-    {
-        // CHECK ALL POSSIBLE DIRECTIONS  mov.nextDirection
-        // CHECK DISTANSTE² FOREACH DIRECTION
-        // RETURN SHORTEST
-        return Vector2.zero;
-    }
-    public int Distance(Vector3 pacManPos, Vector2 direction)
-    {
-        //LINEAR CALCULATION DIST² =  x² + y² ( 8² + 2²)  = 68
-        return 0;
-    }
+        if(this.home != this.initialBehavior)
+        {
+            this.home.Disable();
+        }
 
-//////////////// TARGETING AND POSITION CALCULATION //////////////////
-    private void GhostChase()
-    {
-        // MAIN STATE
+        if(this.initialBehavior != null)
+        {
+            this.initialBehavior.Enable();
+        }
     }
-    private void GhostScatter()
-    {
-        //TIMEEVENT AFTER CHASE
-    }
-    private void GhostEaten()
-    {
-        //IF PACMAN HIT WHILE FRIGHTENED STATE
-        // new Target GhostHouse, when reached turn back to ChaseMode
-    }
-    private void GhostFrightened()
-    {
-        // IF PACMAN EATS POWER PELLET
-        // TURN 180° 
-        // DIRECTION RANDOM
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            if(this.frightened.enabled)
+            {
+                FindObjectOfType<GameManager>().GhostEaten(this);
+            }else{
+                FindObjectOfType<GameManager>().PacmanEaten();
+            }
+        }
     }
 }

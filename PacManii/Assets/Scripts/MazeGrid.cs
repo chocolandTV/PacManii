@@ -24,9 +24,10 @@ public class MazeGrid : MonoBehaviour
     private GameObject level;
     public int MazeSize = 21;
     private Vector3 offset;
-
+    public List<Vector2> availableDirections{get; private set;}
     private void Start()
     {
+        this.availableDirections = new List<Vector2>();
         level = this.gameObject;
         offset = new Vector3(-(MazeSize / 2), -(MazeSize / 2), 0);
         mazeGrid = new bool[MazeSize, MazeSize];
