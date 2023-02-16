@@ -61,46 +61,10 @@ public class MazeGrid : MonoBehaviour
         PrintArray();
 
     }
-    // public void drawGizimos(int seconds, Vector3 position)
-    // {
-    //     position += new Vector3((int)MazeSize/2+1,(int)MazeSize/2+1,0);
-    //     // DIR UP
-    //     if((int)position.y+1 < MazeSize)
-    //     {
-    //         if(!mazeGrid[(int)position.x,(int)position.y+1]){
-    //             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    //             cube.transform.position = new Vector3((int)position.x-(int)MazeSize/2, (int)position.y+1-(int)MazeSize/2, -2);
-    //             Destroy(cube,seconds);
-    //         }
-    //     }
-    //     // DIR DOWN 
-    //     if((int)position.y-1 < MazeSize)
-    //     {
-    //         if(!mazeGrid[(int)position.x,(int)position.y-1]){
-    //             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    //             cube.transform.position = new Vector3((int)position.x-(int)MazeSize/2, (int)position.y-1-(int)MazeSize/2, -2);
-    //             Destroy(cube,seconds);
-    //         }
-    //     }
-    //     // DIR LEFT
-    //     if((int)position.x-1 < MazeSize)
-    //     {
-    //         if(!mazeGrid[(int)position.x-1,(int)position.y]){
-    //             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    //             cube.transform.position = new Vector3((int)position.x-1-(int)MazeSize/2, (int)position.y-(int)MazeSize/2, -2);
-    //             Destroy(cube,seconds);
-    //         }
-    //     }
-    //     // DIR RIGHT
-    //     if((int)position.x+1 < MazeSize)
-    //     {
-    //         if(!mazeGrid[(int)position.x+1,(int)position.y]){
-    //             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    //             cube.transform.position = new Vector3((int)position.x+1-(int)MazeSize/2, (int)position.y-(int)MazeSize/2, -2);
-    //             Destroy(cube,seconds);
-    //         }
-    //     }
-    // }
+    private void CheckAvailableDirection(Vector2 direction)
+    {
+        
+    }
     public Vector2 GridPosition(Vector3 pos)
     {
         Vector3 Gridposition = Vector3Int.RoundToInt(pos) +
