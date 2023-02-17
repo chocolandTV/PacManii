@@ -1313,6 +1313,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7516399862195477565, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
   m_PrefabInstance: {fileID: 8053883798919576179}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132147839368449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5280688270360702186, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+  m_PrefabInstance: {fileID: 8053883798919576179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147839368436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699cde878ba45384da99e411e45ea755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1166050149603346292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1795,6 +1806,46 @@ PrefabInstance:
       propertyPath: mazeObject
       value: 
       objectReference: {fileID: 1524429453}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+      value: ffa872ba-caeb-4a6b-a290-50f25eb81c94
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+      value: Player/StopMoving[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 919132147839368449}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnStopMoving
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PacMan, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147839368439, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7134912875730339463, guid: 32d74caee81c73a429490d77152c0da9, type: 3}
       propertyPath: m_Name
       value: packMan

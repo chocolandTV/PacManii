@@ -70,7 +70,8 @@ public class Movement : MonoBehaviour
     }
   
     private void Move()
-    {
+    { 
+        
         // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);
         // Debug.Log("X: " + posi.x + " Y: " + posi.y);
         // maze.drawGizimos(1, this.rigidbody.position);

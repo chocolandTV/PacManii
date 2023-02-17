@@ -67,44 +67,49 @@ public class MazeGrid : MonoBehaviour
         Vector2[] result = new Vector2[4];
         Vector2 gridpos = GridPosition(pos);
         //////////// CAN UP /////////////
-        if (gridpos.y + 1 < MazeSize)
+        for (int i = 0; i < result.Length; i++)
         {
-            if (mazeGrid[(int)gridpos.x, (int)gridpos.y + 1])
+            
+            if (gridpos.y + 1 < MazeSize && i == 0)
             {
-                result[0] = Vector2.up;
-            }
-            else { result[0] = Vector2.zero; }
+                if (mazeGrid[(int)gridpos.x, (int)gridpos.y + 1])
+                {
+                    result[i] = Vector2.up;
+                }
+                else { result[i] = Vector2.zero; }
 
-        }
-        ////// CAN DOWN ///////////////
-        if (gridpos.y - 1 < MazeSize)
-        {
-            if (mazeGrid[(int)gridpos.x, (int)gridpos.y - 1])
+            }
+            ////// CAN DOWN ///////////////
+            if (gridpos.y - 1 < MazeSize && i == 1)
             {
-                result[2] = Vector2.down;
-            }
-            else { result[2] = Vector2.zero; }
+                if (mazeGrid[(int)gridpos.x, (int)gridpos.y - 1])
+                {
+                    result[i] = Vector2.down;
+                }
+                else { result[i] = Vector2.zero; }
 
-        }
-        ////////// CAN LEFT ///////////////
-        if (gridpos.x - 1 < MazeSize)
-        {
-            if (mazeGrid[(int)gridpos.x-1, (int)gridpos.y ])
+            }
+            ////////// CAN LEFT ///////////////
+            if (gridpos.x - 1 < MazeSize && i == 2)
             {
-                result[3] = Vector2.left;
-            }
-            else { result[3] = Vector2.zero; }
+                if (mazeGrid[(int)gridpos.x-1, (int)gridpos.y ])
+                {
+                    result[i] = Vector2.left;
+                }
+                else { result[i] = Vector2.zero; }
 
-        }
-        ////////////// CAN RIGHT ///////////////
-        if (gridpos.x + 1 < MazeSize)
-        {
-            if (mazeGrid[(int)gridpos.x+1, (int)gridpos.y])
+            }
+            ////////////// CAN RIGHT ///////////////
+            if (gridpos.x + 1 < MazeSize && i == 3)
             {
-                result[1] = Vector2.right;
-            }
-            else { result[1] = Vector2.zero; }
+                if (mazeGrid[(int)gridpos.x+1, (int)gridpos.y])
+                {
+                    result[i] = Vector2.right;
+                }
+                else { result[i] = Vector2.zero; }
 
+            }
+            
         }
         return result;
     }

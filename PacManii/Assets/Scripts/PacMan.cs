@@ -38,7 +38,7 @@ public class PacMan : MonoBehaviour
                 this.transform.rotation = Quaternion.LookRotation(mov.nextDirection, Vector3.up);
             }
             //this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (mov.nextDirection), Time.deltaTime * 40f);
-
+            
         }
     }
     public void OnPause(InputAction.CallbackContext context)
@@ -46,6 +46,14 @@ public class PacMan : MonoBehaviour
         if(context.performed)
         {
             _gameManager.OnGameStatePaused();
+        }
+    }
+    public void OnStopMoving(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            mov.nextDirection = Vector2.zero;
+            Debug.Log(mov.GridPosition());
         }
     }
     void OnTriggerEnter(Collider other)
