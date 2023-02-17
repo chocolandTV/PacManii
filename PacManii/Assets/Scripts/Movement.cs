@@ -63,19 +63,28 @@ public class Movement : MonoBehaviour
 
 
     }
-    
+    public void nextTarget(Vector2 newTarget)
+    {
+
+    }
     public Vector2 GridPosition()
     {
         return maze.GridPosition(this.gameObject.transform.position);
     }
-  
+    public Vector2 GetPacManPosition()
+    {
+        return maze.GridPosition(FindObjectOfType<GameManager>().pacman.transform.position);
+    }
     private void Move()
     { 
+        // IF MOVE IS FINISHED AND GHOST
+
+        //
         
         // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);
         // Debug.Log("X: " + posi.x + " Y: " + posi.y);
         // maze.drawGizimos(1, this.rigidbody.position);
-        if(maze.CheckIfDirValid(this.direction, this.rigidbody.position))
+        if(maze.CheckIfDirValid(this.direction, this.rigidbody.position))// ONLY FOR PACMAN
         {
             
             Vector2 position = this.rigidbody.position;
@@ -94,7 +103,40 @@ public class Movement : MonoBehaviour
         }
 
     }
+    public Vector2[] AvailableDirections()
+    {
+        Vector2[] result = new Vector2[4];
+    // CUTPOSITION
+        Vector3 cutPosition = new Vector3 (Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y),-2);
+        // CHECK UP
+        if(maze.CheckIfDirValid(Vector2.up,this.rigidbody.position))
+           result[0] = Vector2.up;
+        else
+            result[0]  = Vector2.zero;
+
+        // CHECK DOWN
+        if(maze.CheckIfDirValid(Vector2.down,this.rigidbody.position))
+            result[1] = Vector2.down;
+        else
+            result[1]  = Vector2.zero;
+        
+        
+        // CHECK LEFT
+        if(maze.CheckIfDirValid(Vector2.left,this.rigidbody.position))
+            result[2] = Vector2.left;
+        else
+            result[2]  = Vector2.zero;
+        
+        
+        // CHECK RIGHT
+        if(maze.CheckIfDirValid(Vector2.right,this.rigidbody.position))
+            result[3] = Vector2.right;
+        else
+            result[3]  = Vector2.zero;
+        
+        return result;
     
+    }
     private void OnDrawGizmos() {
         if(_drawGizmos)
         {

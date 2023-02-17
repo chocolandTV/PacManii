@@ -33,6 +33,7 @@ public class Ghost : MonoBehaviour
     public GhostFrightened frightened {get;private set;}
     public GhostBehaviour initialBehavior;
     public Transform target;
+    public bool TargetDone = false;
 
     public enum Name
     {
