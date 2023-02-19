@@ -17501,9 +17501,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3738087881769033133, guid: a701c6d5b23b0df4f98e85dc42d20fb3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7275215448045396479, guid: a701c6d5b23b0df4f98e85dc42d20fb3, type: 3}
       propertyPath: m_Name
       value: GhostDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275215448045396479, guid: a701c6d5b23b0df4f98e85dc42d20fb3, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a701c6d5b23b0df4f98e85dc42d20fb3, type: 3}

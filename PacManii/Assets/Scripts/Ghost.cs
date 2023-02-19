@@ -23,7 +23,7 @@ public class Ghost : MonoBehaviour
     */
     public int points = 200; // change on state
     public GameObject GhostEnemy {get;private set;}
-    [SerializeField] private Transform pacManPos;
+    public Transform pacManPos;
     //private Movement movement;
     // NEW FIELDS
     public Movement movement {get; private set;}
@@ -34,7 +34,7 @@ public class Ghost : MonoBehaviour
     public GhostBehaviour initialBehavior;
     public Transform target;
     public Vector2 ChaseOffset;
-    public bool TargetDone = false;
+
 
     public enum Name
     {
@@ -72,8 +72,8 @@ public class Ghost : MonoBehaviour
         this.movement.ResetState();
 
         this.frightened.Disable();
-        this.chase.Disable();
-        this.scatter.Enable();
+        this.chase.Enable();
+        //this.scatter.Enable();
 
         if(this.home != this.initialBehavior)
         {
@@ -94,6 +94,18 @@ public class Ghost : MonoBehaviour
             }else{
                 FindObjectOfType<GameManager>().PacmanEaten();
             }
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+       
+        if (other.CompareTag("Teleport1"))
+        {
+            this.movement.rigidbody.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position + (Vector3.left * 2);
+        }
+        if (other.CompareTag("Teleport2"))
+        {
+            this.movement.rigidbody.transform.position = GameObject.FindGameObjectWithTag("Teleport1").transform.position + (Vector3.right * 2);
         }
     }
 }

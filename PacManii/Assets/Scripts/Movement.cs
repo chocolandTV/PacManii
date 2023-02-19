@@ -11,14 +11,15 @@ public class Movement : MonoBehaviour
     public float speed = 1.0f;
     public float speedMultiplier = 2.0f;
     public Vector2 initialDirection;
-
-    public Rigidbody rigidbody { get; private set; }
+    public bool ghostMoveDone;
+    public Rigidbody rigidbody;
     public Vector2 direction { get; private set; }
     public Vector2 nextDirection { get; set; }
     public Vector3 startingPosition { get; private set; }
+    private Vector2Int currentPosition;
     // public GameObject mazeObject;
     private MazeGrid maze;
-    [field: SerializeField] private bool _drawGizmos= false;
+    [field: SerializeField] private bool _drawGizmos = false;
 
     // FUNCTIONS"Movement.rigidbody" blendet den vererbten Member "Component.rigidbody" aus. Verwenden Sie das new-Schlüsselwort, wenn das 
     private void Awake()
@@ -40,7 +41,7 @@ public class Movement : MonoBehaviour
         this.nextDirection = Vector2.zero;
         this.transform.position = this.startingPosition;
         this.enabled = true;
-        
+
     }
     private void FixedUpdate()
     {
@@ -57,12 +58,17 @@ public class Movement : MonoBehaviour
     private void SetDirection(Vector2 dir)
     {
 
-        
+
         // this.direction = maze.CheckNextMove(dir, this.rigidbody.position);
         this.direction = this.nextDirection;
         this.nextDirection = Vector2.zero;
 
 
+    }
+    public void nextIntersection(Vector2 startpos)
+    {
+        // X = 10 Y = 5 
+        // MOVE SAME DIRECTION RIGHT UNTIL AVAIABLE DIRECTIONS != NEWAVAILABLEDIRECTIONS  (2)
     }
     public void nextTarget(Vector2 newTarget)
     {
@@ -70,125 +76,121 @@ public class Movement : MonoBehaviour
     }
     public int DistanceCheck(Vector2 OffsetPosition)
     {
-        Vector3 pacPos= FindObjectOfType<GameManager>().pacman.transform.position;
-        int xTwo = (int) Mathf.Abs((this.gameObject.transform.position.x+OffsetPosition.x) -  pacPos.x)*2;
-        int yTwo = (int) Mathf.Abs((this.gameObject.transform.position.y+OffsetPosition.y) - pacPos.y)*2;
-        return xTwo+yTwo;
+        Vector3 pacPos = FindObjectOfType<GameManager>().pacman.transform.position;
+        int xTwo = (int)(this.gameObject.transform.position.x + OffsetPosition.x - pacPos.x) * 2;  // X PACMAN 5
+        int yTwo = (int)(this.gameObject.transform.position.y + OffsetPosition.y - pacPos.y) * 2; // Y = -10
+        return xTwo + yTwo;
     }
-    public Vector2 GridPosition()
+    public int MazeGridSizeGet()
+    {
+        return maze.MazeSize;
+    }
+    public Vector2Int GridPosition()
     {
         return maze.GridPosition(this.gameObject.transform.position);
     }
-    public Vector2 GetPacManPosition()
+    public Vector2Int GridPosition( Vector3 pos)
     {
-        return maze.GridPosition(FindObjectOfType<GameManager>().pacman.transform.position);
+        return maze.GridPosition(pos);
     }
     private void Move()
-    { 
-        // IF MOVE IS FINISHED AND GHOST
+    {
+       
 
         //
-        
+
         // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);
         // Debug.Log("X: " + posi.x + " Y: " + posi.y);
         // maze.drawGizimos(1, this.rigidbody.position);
-        if(maze.CheckIfDirValid(this.direction, this.rigidbody.position))// ONLY FOR PACMAN
+        if (maze.CheckIfDirValid(this.direction, this.rigidbody.position))// ONLY FOR PACMAN
         {
-            
+
             Vector2 position = this.rigidbody.position;
             // Vector2 position = new Vector2(posi.x, posi.y);
             Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
             this.rigidbody.MovePosition(position + translation);
-            if(this.direction.y !=0)
+            if (this.direction.y != 0)
             {
-                transform.position = new Vector3(Mathf.RoundToInt(transform.position.x),transform.position.y, transform.position.z);
+                transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z);
             }
-            if(this.direction.x !=0)
+            if (this.direction.x != 0)
             {
                 transform.position = new Vector3(transform.position.x, Mathf.RoundToInt(transform.position.y), transform.position.z);
             }
             
         }
-
-    }
-    public Vector2[] AvailableDirections()
-    {
-        Vector2[] result = new Vector2[4];
-        
-        // CUTPOSITION
-        Vector3 cutPosition = new Vector3 (Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y),-2);
-        // CHECK UP
-        if(maze.CheckIfDirValid(Vector2.up,this.rigidbody.position))
-           result[0] = Vector2.up;
-        else
-            result[0]  = Vector2.zero;
-
-        // CHECK DOWN
-        if(maze.CheckIfDirValid(Vector2.down,this.rigidbody.position))
-            result[1] = Vector2.down;
-        else
-            result[1]  = Vector2.zero;
-        
-        
-        // CHECK LEFT
-        if(maze.CheckIfDirValid(Vector2.left,this.rigidbody.position))
-            result[2] = Vector2.left;
-        else
-            result[2]  = Vector2.zero;
-        
-        
-        // CHECK RIGHT
-        if(maze.CheckIfDirValid(Vector2.right,this.rigidbody.position))
-            result[3] = Vector2.right;
-        else
-            result[3]  = Vector2.zero;
-        
-        return result;
-    
-    }
-    private void OnDrawGizmos() {
-        if(_drawGizmos)
+        Vector2Int checkPos = GridPosition();
+        if(checkPos != currentPosition)
         {
-            if(maze != null && maze.mazeGrid != null)
+            ghostMoveDone =true;
+            currentPosition = checkPos;
+
+        }
+    }
+    public List<Vector2Int> AvailableDirections()
+    {
+        List<Vector2Int> result = new List<Vector2Int>();
+        // CUTPOSITION
+        Vector3 cutPosition = new Vector3(Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y), -2);
+        // CHECK UP
+        if (maze.CheckIfDirValid(Vector2.up, this.rigidbody.position))
+            result.Add(Vector2Int.up);
+        // CHECK LEFT
+        if (maze.CheckIfDirValid(Vector2.left, this.rigidbody.position))
+            result.Add(Vector2Int.left);
+        // CHECK DOWN
+        if (maze.CheckIfDirValid(Vector2.down, this.rigidbody.position))
+            result.Add(Vector2Int.down);
+        // CHECK RIGHT
+        if (maze.CheckIfDirValid(Vector2.right, this.rigidbody.position))
+            result.Add(Vector2Int.right);
+        return result;
+
+    }
+    private void OnDrawGizmos()
+    {
+        if (_drawGizmos)
+        {
+            if (maze != null && maze.mazeGrid != null)
             {
                 // CUTPOSITION
-                Vector3 cutPosition = new Vector3 (Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y),-2);
+                Vector3 cutPosition = new Vector3(Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y), -2);
                 // CHECK UP
-                if(maze.CheckIfDirValid(Vector2.up,this.rigidbody.position))
-                    Gizmos.color=Color.green;
+                if (maze.CheckIfDirValid(Vector2.up, this.rigidbody.position))
+                    Gizmos.color = Color.green;
                 else
-                    Gizmos.color= Color.red;
-                
-                Gizmos.DrawCube(cutPosition + Vector3.up,Vector3.one*0.5f);
-                    
+                    Gizmos.color = Color.red;
+
+                Gizmos.DrawCube(cutPosition + Vector3.up, Vector3.one * 0.5f);
+
                 // CHECK DOWN
-                if(maze.CheckIfDirValid(Vector2.down,this.rigidbody.position))
-                    Gizmos.color=Color.green;
+                if (maze.CheckIfDirValid(Vector2.down, this.rigidbody.position))
+                    Gizmos.color = Color.green;
                 else
-                    Gizmos.color= Color.red;
-                
-                Gizmos.DrawCube(cutPosition + Vector3.down,Vector3.one*0.5f);
+                    Gizmos.color = Color.red;
+
+                Gizmos.DrawCube(cutPosition + Vector3.down, Vector3.one * 0.5f);
                 // CHECK LEFT
-                if(maze.CheckIfDirValid(Vector2.left,this.rigidbody.position))
-                    Gizmos.color=Color.green;
+                if (maze.CheckIfDirValid(Vector2.left, this.rigidbody.position))
+                    Gizmos.color = Color.green;
                 else
-                    Gizmos.color= Color.red;
-                
-                Gizmos.DrawCube(cutPosition + Vector3.left,Vector3.one*0.5f);
+                    Gizmos.color = Color.red;
+
+                Gizmos.DrawCube(cutPosition + Vector3.left, Vector3.one * 0.5f);
                 // CHECK RIGHT
-                if(maze.CheckIfDirValid(Vector2.right,this.rigidbody.position))
-                    Gizmos.color=Color.green;
+                if (maze.CheckIfDirValid(Vector2.right, this.rigidbody.position))
+                    Gizmos.color = Color.green;
                 else
-                    Gizmos.color= Color.red;
-                
-                Gizmos.DrawCube(cutPosition + Vector3.right,Vector3.one*0.5f);
+                    Gizmos.color = Color.red;
+
+                Gizmos.DrawCube(cutPosition + Vector3.right, Vector3.one * 0.5f);
 
                 // SHOW OWN POSITION
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(cutPosition, Vector3.one*0.5f);
+                Gizmos.DrawCube(cutPosition, Vector3.one * 0.5f);
                 // SHOW OFFSET POSITION
-                Gizmos.color  = Color.blue;
-                Vector3 offsetPos = rigidbody.position + new Vector3((int)maze.MazeSize/2,(int)maze.MazeSize/2,0);
+                Gizmos.color = Color.blue;
+                Vector3 offsetPos = rigidbody.position + new Vector3((int)maze.MazeSize / 2, (int)maze.MazeSize / 2, 0);
                 Gizmos.DrawCube(offsetPos, Vector3.one * 0.5f);
             }
         }
