@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    // TRANSFORM
-
     public float speed = 1.0f;
     public float speedMultiplier = 2.0f;
     public Vector2 initialDirection;
@@ -46,7 +44,6 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-
     }
     private void Update()
     {
@@ -57,23 +54,10 @@ public class Movement : MonoBehaviour
     }
     private void SetDirection(Vector2 dir)
     {
-
-
-        // this.direction = maze.CheckNextMove(dir, this.rigidbody.position);
         this.direction = this.nextDirection;
         this.nextDirection = Vector2.zero;
-
-
     }
-    public void nextIntersection(Vector2 startpos)
-    {
-        // X = 10 Y = 5 
-        // MOVE SAME DIRECTION RIGHT UNTIL AVAIABLE DIRECTIONS != NEWAVAILABLEDIRECTIONS  (2)
-    }
-    public void nextTarget(Vector2 newTarget)
-    {
 
-    }
     public int DistanceCheck(Vector2 OffsetPosition)
     {
         Vector3 pacPos = FindObjectOfType<GameManager>().pacman.transform.position;
@@ -95,32 +79,26 @@ public class Movement : MonoBehaviour
     }
     private void Move()
     {
-       
-
-        //
-
-        // Vector3Int posi = new Vector3Int((int)this.rigidbody.position.x,(int)this.rigidbody.position.y, (int)this.rigidbody.position.z);
-        // Debug.Log("X: " + posi.x + " Y: " + posi.y);
-        // maze.drawGizimos(1, this.rigidbody.position);
         if (maze.CheckIfDirValid(this.direction, this.rigidbody.position))// ONLY FOR PACMAN
         {
 
             Vector2 position = this.rigidbody.position;
-            // Vector2 position = new Vector2(posi.x, posi.y);
             Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
+
             this.rigidbody.MovePosition(position + translation);
-            if (this.direction.y != 0)
+
+            if (this.direction.y != 0)// SNAP Y
             {
                 transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z);
             }
-            if (this.direction.x != 0)
+            if (this.direction.x != 0) // SNAP X
             {
                 transform.position = new Vector3(transform.position.x, Mathf.RoundToInt(transform.position.y), transform.position.z);
             }
             
         }
         Vector2Int checkPos = GridPosition();
-        if(checkPos != currentPosition)
+        if(checkPos != currentPosition && AvailableDirections().Count > 2) // next intereselection
         {
             ghostMoveDone =true;
             currentPosition = checkPos;

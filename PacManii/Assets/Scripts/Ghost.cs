@@ -64,7 +64,7 @@ public class Ghost : MonoBehaviour
         // START BEHAVIOUR
     }
     private void Start() {
-        ResetState();
+       // ResetState();
     }
     public void ResetState()
     {

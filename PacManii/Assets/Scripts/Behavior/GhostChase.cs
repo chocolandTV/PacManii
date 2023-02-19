@@ -48,6 +48,7 @@ public class GhostChase : GhostBehaviour
     }
     private void FixedUpdate()
     {
+        // EDIT 
         if(this.ghost.movement.ghostMoveDone)
         {
             this.ghost.movement.ghostMoveDone=false;
@@ -94,17 +95,18 @@ public class GhostChase : GhostBehaviour
             this.lastDir = direction;
         }
         else
-        {
-            // CHECK NEXT DIR
+        {// ONLY 2 DIRECTIONS !
+            // CHECK TUNNLES
             if (validDirections.Contains(lastDir))
                 this.ghost.movement.nextDirection = lastDir;
-            else
+            else// CHECK CORNERS
             {
                 validDirections.Remove(-lastDir);
                 this.ghost.movement.nextDirection = validDirections[0];
-
+                Debug.Log(StringDirection(validDirections[0]));
             }
         }
+
     }
 
     private string StringDirection(Vector2 pos)
@@ -122,7 +124,9 @@ public class GhostChase : GhostBehaviour
     }
     private void OnDisable()
     {
+        this.ghost.chase.Enable(); // SCATTER NORMALIZE
+    }
+    private void OnEnable() {
         this.ghost.chase.Enable();
     }
-    
 }

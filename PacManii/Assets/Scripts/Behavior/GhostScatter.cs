@@ -21,7 +21,7 @@ public class GhostScatter : GhostBehaviour
     // }
     // NEXT DIRECTION CALL
     private void OnDisable() {
-        this.ghost.chase.Enable();
+       // this.ghost.chase.Enable();
     }
     private Vector2 ghostTargetSwitch(Ghost.Name ghost)
     {
