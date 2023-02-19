@@ -8,57 +8,69 @@ public class GhostChase : GhostBehaviour
     private Vector2 PinkyOffset = new Vector2(3,0);
     private Vector2 BlinkyOffset = new Vector2(0,0);
     
-
-   private void FixedUpdate() { // CALL IS TO MUCH !° ON FINISHTARGET !
-        if(this.enabled && this.ghost.frightened.enabled && this.ghost.TargetDone)
+private void Start() {
+    Debug.Log("CHASE STARTED");
+}
+   private void FixedUpdate() 
+   {
+        // // NEW TARGETDIRECTION ON NEXTMOVE
+        // if(this.enabled && this.ghost.frightened.enabled && this.ghost.TargetDone)
+        // {
+        //     this.ghost.movement.nextTarget(ghostOffset(this.ghost.ghostName));
+        // }
+        if(this.ghost.chase != null && this.enabled && !this.ghost.frightened.enabled)
         {
-            this.ghost.movement.nextTarget(ghostTargetSwitch(this.ghost.ghostName));
-        }
-        if(this.ghost.chase == null && this.enabled && !this.ghost.frightened.enabled)
-        {
-            Vector2 direction = Vector2.zero; // DIRECTION TO NULL
-            float minDistance = this.ghost.; // Minimun distance
-            // MINDISTANCE
-            // WAIT FOR NEXT TARGET
+           int distance=100;
+           Vector2 tempVector = Vector2.zero;
             foreach (Vector2 availableDirection in this.ghost.movement.AvailableDirections())
             {
-                Vector3 newPosition = this.ghost.transform.position + new Vector3(availableDirection.x,availableDirection.y,-1);
-                float distance = (this.ghost.target.position - newPosition).sqrMagnitude;
-
-                if(distance < minDistance)
+              
+              if(availableDirection != Vector2.zero)
+              {
+                if(this.ghost.movement.DistanceCheck(availableDirection + ghostOffset(this.ghost.ghostName)) < distance)
+                {
+                    tempVector = availableDirection;
+                    
+                }else
+                {
+                    distance = this.ghost.movement.DistanceCheck(availableDirection +ghostOffset(this.ghost.ghostName));
+                }
+              } 
+                
                 
             }
-
+            this.ghost.movement.nextDirection = tempVector;
+            Debug.Log(this.ghost.movement.nextDirection);
         }
     }
     // NEXT DIRECTION CALL
     private void OnDisable() {
-        this.ghost.scatter.Enable();
+        this.ghost.chase.Enable();
     }
-    private Vector2 ghostTargetSwitch(Ghost.Name ghost)
+    private Vector2 ghostOffset(Ghost.Name ghost)
     {   
         int randomClydeAroundTarget;
         Vector2 result;
         switch (ghost)
         {
             case Ghost.Name.Blinky: 
-                result =  this.ghost.movement.GetPacManPosition() + BlinkyOffset;
+                result =   BlinkyOffset;
                 break;
             case Ghost.Name.Clyde:
                 randomClydeAroundTarget= Random.Range(0,1);
                 if(randomClydeAroundTarget >0)  
                     clydeOffset -= clydeOffset*2;
                     
-                result = this.ghost.movement.GetPacManPosition() + clydeOffset;
+                result =  clydeOffset;
                 break;
             case Ghost.Name.Inky:
-                result  = this.ghost.movement.GetPacManPosition() + InkyOffset;
+                result  =  InkyOffset;
                 break;
             case Ghost.Name.Pinky:
-                result  = this.ghost.movement.GetPacManPosition() + PinkyOffset;
+                result  = PinkyOffset;
                 break;
             default: 
-                result = this.ghost.movement.GetPacManPosition() + BlinkyOffset;
+                result = BlinkyOffset;
                 break;
         }
         return result;

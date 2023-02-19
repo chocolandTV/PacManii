@@ -40,6 +40,7 @@ public class Movement : MonoBehaviour
         this.nextDirection = Vector2.zero;
         this.transform.position = this.startingPosition;
         this.enabled = true;
+        
     }
     private void FixedUpdate()
     {
@@ -66,6 +67,13 @@ public class Movement : MonoBehaviour
     public void nextTarget(Vector2 newTarget)
     {
 
+    }
+    public int DistanceCheck(Vector2 OffsetPosition)
+    {
+        Vector3 pacPos= FindObjectOfType<GameManager>().pacman.transform.position;
+        int xTwo = (int) Mathf.Abs((this.gameObject.transform.position.x+OffsetPosition.x) -  pacPos.x)*2;
+        int yTwo = (int) Mathf.Abs((this.gameObject.transform.position.y+OffsetPosition.y) - pacPos.y)*2;
+        return xTwo+yTwo;
     }
     public Vector2 GridPosition()
     {
@@ -106,7 +114,8 @@ public class Movement : MonoBehaviour
     public Vector2[] AvailableDirections()
     {
         Vector2[] result = new Vector2[4];
-    // CUTPOSITION
+        
+        // CUTPOSITION
         Vector3 cutPosition = new Vector3 (Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y),-2);
         // CHECK UP
         if(maze.CheckIfDirValid(Vector2.up,this.rigidbody.position))

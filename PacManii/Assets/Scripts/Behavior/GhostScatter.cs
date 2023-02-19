@@ -13,12 +13,12 @@ public class GhostScatter : GhostBehaviour
     private Vector2 InkyTarget = new Vector2(14,2);
     private Vector2 PinkyTarget = new Vector2(4,18);
     private Vector2 BlinkyTarget = new Vector2(16,18);
-    private void FixedUpdate() {
-        if(this.enabled && this.ghost.frightened.enabled && this.ghost.TargetDone)
-        {
-            this.ghost.movement.nextTarget(ghostTargetSwitch(this.ghost.ghostName));
-        }
-    }
+    // private void FixedUpdate() {
+    //     if(this.enabled && this.ghost.frightened.enabled && this.ghost.TargetDone)
+    //     {
+    //         this.ghost.movement.nextTarget(ghostTargetSwitch(this.ghost.ghostName));
+    //     }
+    // }
     // NEXT DIRECTION CALL
     private void OnDisable() {
         this.ghost.chase.Enable();

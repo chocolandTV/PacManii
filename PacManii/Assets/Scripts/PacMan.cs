@@ -13,7 +13,7 @@ public class PacMan : MonoBehaviour
     // public int collectedPallets { get; private set; }
     public GameObject palletAfterEffectPrefab;
     private GameObject palletAfterEffectObject;
-
+    public Transform ghosty;
     private void Start()
     {
         mov = GetComponent<Movement>();
@@ -53,21 +53,22 @@ public class PacMan : MonoBehaviour
         if(context.performed)
         {
             mov.nextDirection = Vector2.zero;
-            Debug.Log(mov.GridPosition());
+            // Debug.Log(mov.GridPosition());
+            // Debug.Log(mov.DistanceCheck(ghosty.position));
         }
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ghost"))
-        {
-            _gameManager.LoseLive();
-        }
+        // if (other.CompareTag("Ghost"))
+        // {
+        //     _gameManager.LoseLive();
+        // }
 
-        if (other.CompareTag("Frightend"))
-        {
-            // other.GetComponent<Movement>().MoveFrightend();
-            // ADD SCORE
-        }
+        // if (other.CompareTag("Frightend"))
+        // {
+        //     // other.GetComponent<Movement>().MoveFrightend();
+        //     // ADD SCORE
+        // }
         if (other.CompareTag("Teleport1"))
         {
             rb.transform.position = GameObject.FindGameObjectWithTag("Teleport2").transform.position + (Vector3.left * 2);

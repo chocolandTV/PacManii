@@ -33,6 +33,7 @@ public class Ghost : MonoBehaviour
     public GhostFrightened frightened {get;private set;}
     public GhostBehaviour initialBehavior;
     public Transform target;
+    public Vector2 ChaseOffset;
     public bool TargetDone = false;
 
     public enum Name
@@ -67,7 +68,7 @@ public class Ghost : MonoBehaviour
     }
     public void ResetState()
     {
-        this.gameObject.SetActive(true);
+        // this.gameObject.SetActive(true);
         this.movement.ResetState();
 
         this.frightened.Disable();
