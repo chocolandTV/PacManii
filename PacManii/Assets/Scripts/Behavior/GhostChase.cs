@@ -55,6 +55,9 @@ public class GhostChase : GhostBehaviour
             updateTarget();
             HandleNextDirection();
         }
+        else{
+            Debug.Log("False MoveDone");
+        }
     }
     private void updateTarget()
     {
@@ -93,6 +96,7 @@ public class GhostChase : GhostBehaviour
             }
             this.ghost.movement.nextDirection = direction;
             this.lastDir = direction;
+            this.ghost.movement.ghostMoveDone = true; 
         }
         else
         {// ONLY 2 DIRECTIONS !
@@ -100,12 +104,13 @@ public class GhostChase : GhostBehaviour
             if (validDirections.Contains(lastDir))
                 this.ghost.movement.nextDirection = lastDir;
             else// CHECK CORNERS
-            {
+            {   // GO NEXT INTERSECTION 
                 validDirections.Remove(-lastDir);
                 this.ghost.movement.nextDirection = validDirections[0];
                 Debug.Log(StringDirection(validDirections[0]));
             }
         }
+        
 
     }
 

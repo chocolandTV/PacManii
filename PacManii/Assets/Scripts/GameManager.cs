@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         ResetGhostMultiplier();
         for (int i = 0; i < this.ghosts.Length; i++)
         {
-            this.ghosts[i].ResetState();
+            //this.ghosts[i].ResetState();
         }
         this.pacman.gameObject.SetActive(true);
         this.pacman.GetComponent<DyingAnim>().OnStartAnimate();

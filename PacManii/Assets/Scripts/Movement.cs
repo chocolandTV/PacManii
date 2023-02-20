@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public float speed = 1.0f;
     public float speedMultiplier = 2.0f;
     public Vector2 initialDirection;
-    public bool ghostMoveDone;
+    public bool ghostMoveDone= false;
     public Rigidbody rigidbody;
     public Vector2 direction { get; private set; }
     public Vector2 nextDirection { get; set; }
@@ -39,6 +39,7 @@ public class Movement : MonoBehaviour
         this.nextDirection = Vector2.zero;
         this.transform.position = this.startingPosition;
         this.enabled = true;
+        this.ghostMoveDone= false;
 
     }
     private void FixedUpdate()
@@ -55,7 +56,7 @@ public class Movement : MonoBehaviour
     private void SetDirection(Vector2 dir)
     {
         this.direction = this.nextDirection;
-        this.nextDirection = Vector2.zero;
+        // this.nextDirection = Vector2.zero;
     }
 
     public int DistanceCheck(Vector2 OffsetPosition)
@@ -98,7 +99,7 @@ public class Movement : MonoBehaviour
             
         }
         Vector2Int checkPos = GridPosition();
-        if(checkPos != currentPosition && AvailableDirections().Count > 2) // next intereselection
+        if(checkPos != currentPosition) // next intereselection
         {
             ghostMoveDone =true;
             currentPosition = checkPos;
