@@ -74,6 +74,7 @@ public class Movement : MonoBehaviour
     {
         return maze.GridPosition(this.gameObject.transform.position);
     }
+   
     public Vector2Int GridPosition( Vector3 pos)
     {
         return maze.GridPosition(pos);

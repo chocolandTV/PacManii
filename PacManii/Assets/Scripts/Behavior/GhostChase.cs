@@ -48,16 +48,14 @@ public class GhostChase : GhostBehaviour
     }
     private void FixedUpdate()
     {
-        // EDIT 
+        
         if(this.ghost.movement.ghostMoveDone)
         {
             this.ghost.movement.ghostMoveDone=false;
             updateTarget();
             HandleNextDirection();
         }
-        else{
-            Debug.Log("False MoveDone");
-        }
+        
     }
     private void updateTarget()
     {
@@ -66,10 +64,33 @@ public class GhostChase : GhostBehaviour
             case Ghost.Name.Blinky:
                 target = this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
                 break;
+            case Ghost.Name.Inky: // Pacman 2 Rechts + Direction von Blinky to target.Length *2
+                target = this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
+                break;
+            case Ghost.Name.Pinky:
+                target = this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
+                break;
+            case Ghost.Name.Clyde:
+                target = this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
+                break;
             default:
                 target = Vector2Int.zero;
                 break;
         }
+    }
+    private Vector2Int InkyTargeting(Vector2Int target)
+    {
+        // BlinkyPos distance.Length to pacypos * 2
+        // Pacman + 2
+        Vector2Int pacypos =  this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
+        Quaternion rotation = this.ghost.pacManPos.rotation;
+        if(rotation.z  == 90) // RIGHT
+        {
+            pacypos.x +=2;
+        }else{
+            pacypos.x -=2;
+        }
+        return pacypos;
     }
     private void HandleNextDirection()
     {
@@ -129,7 +150,7 @@ public class GhostChase : GhostBehaviour
     }
     private void OnDisable()
     {
-        this.ghost.chase.Enable(); // SCATTER NORMALIZE
+        this.ghost.scatter.Enable(); // SCATTER NORMALIZE
     }
     private void OnEnable() {
         this.ghost.chase.Enable();

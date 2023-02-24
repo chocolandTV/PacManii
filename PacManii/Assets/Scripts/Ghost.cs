@@ -32,7 +32,7 @@ public class Ghost : MonoBehaviour
     public GhostChase chase{get;private set;}
     public GhostFrightened frightened {get;private set;}
     public GhostBehaviour initialBehavior;
-    public Transform target;
+    // public Transform target;
     public Vector2 ChaseOffset;
 
 
@@ -64,11 +64,11 @@ public class Ghost : MonoBehaviour
         // START BEHAVIOUR
     }
     private void Start() {
-       // ResetState();
+       ResetState();
     }
     public void ResetState()
     {
-        // this.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);
         this.movement.ResetState();
 
         this.frightened.Disable();
