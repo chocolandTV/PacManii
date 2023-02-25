@@ -5,28 +5,50 @@ using System.Collections.Generic;
 public class GhostScatter : GhostBehaviour
 {
     // WAYPOINT SYSTEM FROM MAZEGRID
-    private Vector2[] blinkyPattern = new Vector2[4] { new Vector2(15, 19), new Vector2(18, 19), new Vector2(18, 17), new Vector2(15, 17) };
-    private Vector2[] InkyPattern = new Vector2[8] { new Vector2(13, 5), new Vector2(15, 5), new Vector2(15, 3), new Vector2(18, 3), new Vector2(18, 1), new Vector2(11, 1), new Vector2(11, 3), new Vector2(13, 3) };
-    private Vector2[] PinkyPattern = new Vector2[4] { new Vector2(5, 19), new Vector2(2, 19), new Vector2(2, 17), new Vector2(5, 17) };
-    private Vector2[] ClydePattern = new Vector2[8]{new Vector2(7,5), new Vector2(5,5), new Vector2(5,3), new Vector2(2,3),new Vector2(2,1), new Vector2(9,1), new Vector2(9,3), new Vector2(7,3) };
+    private Vector2Int[] blinkyPattern = new Vector2Int[4] { new Vector2Int(15, 19), new Vector2Int(18, 19), new Vector2Int(18, 17), new Vector2Int(15, 17) };
+    private Vector2Int[] InkyPattern = new Vector2Int[8] { new Vector2Int(13, 5), new Vector2Int(15, 5), new Vector2Int(15, 3), new Vector2Int(18, 3), new Vector2Int(18, 1), new Vector2Int(11, 1), new Vector2Int(11, 3), new Vector2Int(13, 3) };
+    private Vector2Int[] PinkyPattern = new Vector2Int[4] { new Vector2Int(5, 19), new Vector2Int(2, 19), new Vector2Int(2, 17), new Vector2Int(5, 17) };
+    private Vector2Int[] ClydePattern = new Vector2Int[8]{new Vector2Int(7,5), new Vector2Int(5,5), new Vector2Int(5,3), new Vector2Int(2,3),new Vector2Int(2,1), new Vector2Int(9,1), new Vector2Int(9,3), new Vector2Int(7,3) };
     // LATER TARGET SURROUNDING IMPLEMENT !
     private Vector2Int clydeTarget = new Vector2Int(6,2);
     private Vector2Int InkyTarget = new Vector2Int(14,2);
     private Vector2Int PinkyTarget = new Vector2Int(4,18);
     private Vector2Int BlinkyTarget = new Vector2Int(16,18);
-    private Vector2Int target;
+    private Vector2Int targetPosition;
     private Vector2Int lastDir;
+    private List<Vector2Int> tempSteps = new List<Vector2Int>();
+    public bool _drawGizmos;
+    private void OnDisable()
+    {
+        ghost.chase.Enable();
+    }
     private void FixedUpdate() {
         if(this.ghost.movement.ghostMoveDone)
         {
             this.ghost.movement.ghostMoveDone=false;
-            updateTarget();
+            if(this.ghost.movement.GridPosition() == targetPosition)
+            {
+                updateTarget();
+            }
             HandleNextDirection();
         }
     }
     private void updateTarget()
     {
-        target = ghostTargetSwitch(this.ghost.ghostName);
+        if(tempSteps.Count == 0)// when all targets done renew
+
+        {
+            tempSteps.Clear();
+            foreach ( Vector2Int x in ghostTargetSwitch(this.ghost.ghostName))
+            {
+                tempSteps.Add(x);
+            }
+        }else 
+        {
+            tempSteps.Remove(tempSteps[0]);
+        }
+        targetPosition = tempSteps[0];
+
     }
     private void HandleNextDirection()
     {
@@ -37,7 +59,7 @@ public class GhostScatter : GhostBehaviour
             float minDistance = float.MaxValue;
             foreach (Vector2Int x in validDirections)
             {
-                float dist = Vector2Int.Distance(x + ghostpos, target);
+                float dist = Vector2Int.Distance(x + ghostpos, targetPosition);
                 if (dist < minDistance)
                     minDistance = dist;
             }
@@ -45,7 +67,7 @@ public class GhostScatter : GhostBehaviour
             Vector2Int direction = Vector2Int.zero;
             foreach (Vector2Int x in validDirections)
             {
-                if (Vector2Int.Distance(x + ghostpos, target) == minDistance)
+                if (Vector2Int.Distance(x + ghostpos, targetPosition) == minDistance)
                 {
                     direction = x;
                     break;
@@ -57,47 +79,57 @@ public class GhostScatter : GhostBehaviour
         }
         else
         {// ONLY 2 DIRECTIONS !
+            Debug.Log(" ONLY 2 DIRECTIONS");
             // CHECK TUNNLES
-            if (validDirections.Contains(lastDir))
+            if (validDirections.Contains(lastDir)){
                 this.ghost.movement.nextDirection = lastDir;
+                Debug.Log(" Decide Tunnle");}
             else// CHECK CORNERS
             {   // GO NEXT INTERSECTION 
                 validDirections.Remove(-lastDir);
                 this.ghost.movement.nextDirection = validDirections[0];
+                Debug.Log(" Decide Corner with direction : " + validDirections[0]);
                 
             }
         }
         
 
     }
-    private void OnDisable()
+    
+    private Vector2Int[] ghostTargetSwitch(Ghost.Name ghost)
     {
-        this.ghost.chase.Enable(); // SCATTER NORMALIZE
-    }
-    private void OnEnable() {
-        this.ghost.scatter.Enable();
-    }
-    private Vector2Int ghostTargetSwitch(Ghost.Name ghost)
-    {
-        Vector2Int result;
+        Vector2Int[] result;
         switch (ghost)
         {
             case Ghost.Name.Blinky: 
-                result = BlinkyTarget;
+                result = blinkyPattern;
                 break;
             case Ghost.Name.Clyde:
-                result = clydeTarget;
+                result = ClydePattern;
                 break;
             case Ghost.Name.Inky:
-                result  = InkyTarget;
+                result  = InkyPattern;
                 break;
             case Ghost.Name.Pinky:
-                result  = PinkyTarget;
+                result  = PinkyPattern;
                 break;
             default: 
-                result = BlinkyTarget;
+                result = blinkyPattern;
                 break;
         }
         return result;
+    }
+    private void OnDrawGizmos()
+    {
+        if (_drawGizmos)
+        {
+            if (targetPosition != null)
+            {
+                
+                Gizmos.color = Color.blue;
+                Vector3 offsetPos = new Vector3(targetPosition.x + 10.5f,targetPosition.y + 10.5f, 0);
+                Gizmos.DrawCube(offsetPos, Vector3.one * 0.5f);
+            }
+        }
     }
 }

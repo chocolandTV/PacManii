@@ -53,10 +53,15 @@ public class Movement : MonoBehaviour
             SetDirection(this.nextDirection);
         }
     }
-    private void SetDirection(Vector2 dir)
+    private void SetDirection(Vector2 dir, bool forced =false)
     {
-        this.direction = this.nextDirection;
-        // this.nextDirection = Vector2.zero;
+       if(forced)
+        { 
+            this.direction = dir;
+            nextDirection = Vector2.zero;
+        }else{
+            nextDirection = dir;
+        }
     }
 
     public int DistanceCheck(Vector2 OffsetPosition)

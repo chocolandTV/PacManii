@@ -100,48 +100,6 @@ public class PacMan : MonoBehaviour
         this.gameObject.SetActive(true);
         this.mov.ResetState();
     }
-    // private void Animate(Vector2 dir)
-    // {
-        // this.transform.rotation = Quaternion.LookRotation (dir);
-        // // Vector3 target = new Vector3 (0f,0f,0f);
-        // Quaternion target = Quaternion.Euler(0.0f,180.0f,0.0f);
-        // if (dir.x == -1.0f)//LEFT
-        // {
-        //     target.y += 90f;
-        // }else 
-        // if (dir.x == 1.0f )//RIGHT
-        // {
-        //     target.y -= 90f;
-        // }else 
-        // if (dir.y == -1.0f )// DOWN
-        // {
-        //     target.x = 90f;
-        //     target.y = 270f;
-        //     target.z = -270f;
-        // }else 
-        // if (dir.y ==1.0f)// UP
-        // {
-        //     target.x = -90f;
-        //     target.z = -180f;
-        // }
-        // this.gameObject.transform.rotation=target;
-        //this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-    // }
-    // private void FixedUpdate()
-    // {
-    //     Animate();
-    // }
-    // private void SetCollectedPallets(int value)
-    // {
-    //     collectedPallets = value;
-    // }
-    // INPUT 
-    // CHECK INPUT (position in mazegrid )
-    // A 
-    // private Vector2Int position;
-    // if(MazeGrid.CheckMoveNext(position, MazeGrid.Direction.Left)
-    // {
-
-    // }
+    
 
 }

@@ -148,11 +148,9 @@ public class GhostChase : GhostBehaviour
             return "Ghost.Next(right)";
         return "Ghost.Next(Null)";
     }
-    private void OnDisable()
+   private void OnDisable()
     {
-        this.ghost.scatter.Enable(); // SCATTER NORMALIZE
+        ghost.scatter.Enable();
     }
-    private void OnEnable() {
-        this.ghost.chase.Enable();
-    }
+
 }
