@@ -1,44 +1,44 @@
-    // // NEW TARGETDIRECTION ON NEXTMOVE
-    // if(this.enabled && this.ghost.frightened.enabled && this.ghost.TargetDone)
-    // MOVEMENT PATTERN
-    // {https://dev.to/code2bits/pac-man-patterns--ghost-movement-strategy-pattern-1k1a
-    // ALGORYTHM https://gameinternals.com/understanding-pac-man-ghost-behavior
+// // NEW TARGETDIRECTION ON NEXTMOVE
+// if(this.enabled && this.ghost.frightened.enabled && this.ghost.TargetDone)
+// MOVEMENT PATTERN
+// {https://dev.to/code2bits/pac-man-patterns--ghost-movement-strategy-pattern-1k1a
+// ALGORYTHM https://gameinternals.com/understanding-pac-man-ghost-behavior
 
-    //     this.ghost.movement.nextTarget(ghostOffset(this.ghost.ghostName));
-    // }
-    // PROBLEM:  GHOST IS WAITING IF PACMAN IS RIGHT OR TOP OF HIM AND STILL MOVING TO TOP RIGHT CORNER
-    /*
-        ALGORYTHM: CHASE  = 
-        geg: pacman                 ges.: nextDirection ( x² + y² )
-            ghostposition
-            grid
-            availableMovements
-            points of interest available directions 3+
+//     this.ghost.movement.nextTarget(ghostOffset(this.ghost.ghostName));
+// }
+// PROBLEM:  GHOST IS WAITING IF PACMAN IS RIGHT OR TOP OF HIM AND STILL MOVING TO TOP RIGHT CORNER
+/*
+    ALGORYTHM: CHASE  = 
+    geg: pacman                 ges.: nextDirection ( x² + y² )
+        ghostposition
+        grid
+        availableMovements
+        points of interest available directions 3+
 
-            Problems:  Sackgassen
-                       Intersections
-        #1 welche Richtungen sind legal
-        #2 wenn mögliche richtungen >3 
-                 jede richtung und distance zu ziel
-                 minimum der distancen speichern
-        #3    für jede legale Richtung    
-                wenn distance = minimun 
-                    return legale Richtung
-
-
-        Foreach Available Pos
-                if < 2 change dir
-                else
+        Problems:  Sackgassen
+                   Intersections
+    #1 welche Richtungen sind legal
+    #2 wenn mögliche richtungen >3 
+             jede richtung und distance zu ziel
+             minimum der distancen speichern
+    #3    für jede legale Richtung    
+            wenn distance = minimun 
+                return legale Richtung
 
 
-    */
+    Foreach Available Pos
+            if < 2 change dir
+            else
+
+
+*/
 
 using UnityEngine;
 using System.Collections.Generic;
 
 public class GhostChase : GhostBehaviour
 {
-    [SerializeField]private  Vector2 Offset = new Vector2(0, 0);  // DISTANCE 
+    [SerializeField] private Vector2 Offset = new Vector2(0, 0);  // DISTANCE 
 
     public Vector2Int target;
     private Vector2Int lastDir;
@@ -48,14 +48,15 @@ public class GhostChase : GhostBehaviour
     }
     private void FixedUpdate()
     {
-        
-        if(this.ghost.movement.ghostMoveDone)
+
+        if (this.ghost.movement.ghostMoveDone)
         {
-            this.ghost.movement.ghostMoveDone=false;
+            this.ghost.movement.ghostMoveDone = false;
             updateTarget();
-            HandleNextDirection();
         }
+            HandleNextDirection();
         
+
     }
     private void updateTarget()
     {
@@ -82,13 +83,15 @@ public class GhostChase : GhostBehaviour
     {
         // BlinkyPos distance.Length to pacypos * 2
         // Pacman + 2
-        Vector2Int pacypos =  this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
+        Vector2Int pacypos = this.ghost.movement.GridPosition(this.ghost.pacManPos.position);
         Quaternion rotation = this.ghost.pacManPos.rotation;
-        if(rotation.z  == 90) // RIGHT
+        if (rotation.z == 90) // RIGHT
         {
-            pacypos.x +=2;
-        }else{
-            pacypos.x -=2;
+            pacypos.x += 2;
+        }
+        else
+        {
+            pacypos.x -= 2;
         }
         return pacypos;
     }
@@ -117,21 +120,24 @@ public class GhostChase : GhostBehaviour
             }
             this.ghost.movement.nextDirection = direction;
             this.lastDir = direction;
-            this.ghost.movement.ghostMoveDone = true; 
+            this.ghost.movement.ghostMoveDone = true;
         }
         else
         {// ONLY 2 DIRECTIONS !
             // CHECK TUNNLES
             if (validDirections.Contains(lastDir))
+            {
                 this.ghost.movement.nextDirection = lastDir;
+                
+            }
             else// CHECK CORNERS
             {   // GO NEXT INTERSECTION 
                 validDirections.Remove(-lastDir);
                 this.ghost.movement.nextDirection = validDirections[0];
-                Debug.Log(StringDirection(validDirections[0]));
+                // Debug.Log(StringDirection(validDirections[0]));
             }
         }
-        
+
 
     }
 
@@ -148,7 +154,7 @@ public class GhostChase : GhostBehaviour
             return "validDir(right)";
         return "validDir(Null)";
     }
-   private void OnDisable()
+    private void OnDisable()
     {
         ghost.scatter.Enable();
     }

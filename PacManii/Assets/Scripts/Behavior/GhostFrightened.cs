@@ -18,7 +18,7 @@ public class GhostFrightened : GhostBehaviour
         }
         else
         {
-
+            FrightendRandom();
         }
 
     }

@@ -58,10 +58,10 @@ public class Movement : MonoBehaviour
        if(forced)
         { 
             Debug.Log("Forced Movement");
-            this.direction = dir;
+            this.direction = this.nextDirection;
             this.nextDirection = Vector2.zero;
         }else{
-            this.nextDirection = dir;
+            this.direction = this.nextDirection;
         }
     }
 

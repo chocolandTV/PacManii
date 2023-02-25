@@ -71,8 +71,8 @@ public class Ghost : MonoBehaviour
         this.gameObject.SetActive(true);
         this.movement.ResetState();
  // DEBUG EDIT
-        this.frightened.Disable();
-        this.chase.Disable();
+        // this.frightened.Disable();
+        // this.chase.Disable();
         this.scatter.Enable();
         //this.scatter.Enable();
 

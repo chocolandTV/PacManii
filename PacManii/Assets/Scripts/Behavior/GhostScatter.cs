@@ -8,51 +8,47 @@ public class GhostScatter : GhostBehaviour
     private Vector2Int[] blinkyPattern = new Vector2Int[4] { new Vector2Int(15, 19), new Vector2Int(18, 19), new Vector2Int(18, 17), new Vector2Int(15, 17) };
     private Vector2Int[] InkyPattern = new Vector2Int[8] { new Vector2Int(13, 5), new Vector2Int(15, 5), new Vector2Int(15, 3), new Vector2Int(18, 3), new Vector2Int(18, 1), new Vector2Int(11, 1), new Vector2Int(11, 3), new Vector2Int(13, 3) };
     private Vector2Int[] PinkyPattern = new Vector2Int[4] { new Vector2Int(5, 19), new Vector2Int(2, 19), new Vector2Int(2, 17), new Vector2Int(5, 17) };
-    private Vector2Int[] ClydePattern = new Vector2Int[8]{new Vector2Int(7,5), new Vector2Int(5,5), new Vector2Int(5,3), new Vector2Int(2,3),new Vector2Int(2,1), new Vector2Int(9,1), new Vector2Int(9,3), new Vector2Int(7,3) };
+    private Vector2Int[] ClydePattern = new Vector2Int[8] { new Vector2Int(7, 5), new Vector2Int(5, 5), new Vector2Int(5, 3), new Vector2Int(2, 3), new Vector2Int(2, 1), new Vector2Int(9, 1), new Vector2Int(9, 3), new Vector2Int(7, 3) };
     // LATER TARGET SURROUNDING IMPLEMENT !
-    private Vector2Int clydeTarget = new Vector2Int(6,2);
-    private Vector2Int InkyTarget = new Vector2Int(14,2);
-    private Vector2Int PinkyTarget = new Vector2Int(4,18);
-    private Vector2Int BlinkyTarget = new Vector2Int(16,18);
+    private Vector2Int clydeTarget = new Vector2Int(6, 2);
+    private Vector2Int InkyTarget = new Vector2Int(14, 2);
+    private Vector2Int PinkyTarget = new Vector2Int(4, 18);
+    private Vector2Int BlinkyTarget = new Vector2Int(16, 18);
     private Vector2Int targetPosition;
     private Vector2Int lastDir;
-    private List<Vector2Int> tempSteps = new List<Vector2Int>();
+    private int currentWayPoint = 0;
+    // private List<Vector2Int> tempSteps = new List<Vector2Int>();
     public bool _drawGizmos;
     private void OnDisable()
     {
         ghost.chase.Enable();
     }
-    private void Start() {
+    private void Start()
+    {
         Debug.Log("Ghost.Scatter Started");
     }
-    private void FixedUpdate() {
-        
+    private void FixedUpdate()
+    {
+
         updateTarget();
-            
+
         HandleNextDirection();
-        
+
     }
     private void updateTarget()
     {
-        if(tempSteps.Count == 0)// when all targets done renew
-        {
-            tempSteps.Clear();
-            foreach ( Vector2Int x in ghostTargetSwitch(this.ghost.ghostName))
+        if (targetPosition == this.ghost.movement.GridPosition())
             {
-                tempSteps.Add(x);
-            }
-            
-
-        }else 
-        {
-            if(targetPosition == this.ghost.movement.GridPosition()){
                 Debug.Log("Reached Waypoint.");
-                tempSteps.Remove(tempSteps[0]);
-               
+                currentWayPoint++;
+
             }
+        targetPosition = ghostTargetSwitch(this.ghost.ghostName)[currentWayPoint];
+        Debug.Log(targetPosition);
+        if (currentWayPoint == ghostTargetSwitch(this.ghost.ghostName).Length-1)// when all targets done renew
+        {
+            currentWayPoint = 0;
         }
-         targetPosition = tempSteps[0];
-         Debug.Log(targetPosition);
 
     }
     private void HandleNextDirection()
@@ -60,65 +56,47 @@ public class GhostScatter : GhostBehaviour
         List<Vector2Int> validDirections = this.ghost.movement.AvailableDirections();
         // if (validDirections.Count > 2)
         // {
-            Vector2Int ghostpos = this.ghost.movement.GridPosition();
-            float minDistance = float.MaxValue;
-            foreach (Vector2Int x in validDirections)
+        Vector2Int ghostpos = this.ghost.movement.GridPosition();
+        float minDistance = float.MaxValue;
+        foreach (Vector2Int x in validDirections)
+        {
+            float dist = Vector2Int.Distance(x + ghostpos, targetPosition);
+            if (dist < minDistance)
+                minDistance = dist;
+        }
+        // #3
+        Vector2Int direction = Vector2Int.zero;
+        foreach (Vector2Int x in validDirections)
+        {
+            if (Vector2Int.Distance(x + ghostpos, targetPosition) == minDistance)
             {
-                float dist = Vector2Int.Distance(x + ghostpos, targetPosition);
-                if (dist < minDistance)
-                    minDistance = dist;
+                direction = x;
+                break;
             }
-            // #3
-            Vector2Int direction = Vector2Int.zero;
-            foreach (Vector2Int x in validDirections)
-            {
-                if (Vector2Int.Distance(x + ghostpos, targetPosition) == minDistance)
-                {
-                    direction = x;
-                    break;
-                }
-            }
-            this.ghost.movement.nextDirection = direction;
-            this.lastDir = direction;
-            this.ghost.movement.ghostMoveDone = true; 
-        // }
-        // else
-        // {// ONLY 2 DIRECTIONS !
-        //     Debug.Log(" ONLY 2 DIRECTIONS");
-        //     // CHECK TUNNLES
-        //     if (validDirections.Contains(lastDir)){
-        //         this.ghost.movement.nextDirection = lastDir;
-        //         Debug.Log(" Decide Tunnle");}
-        //     else// CHECK CORNERS
-        //     {   // GO NEXT INTERSECTION 
-        //         validDirections.Remove(-lastDir);
-        //         this.ghost.movement.nextDirection = validDirections[0];
-        //         Debug.Log(" Decide Corner with direction : " + validDirections[0]);
-                
-        //     }
-        // }
-        
-
+        }
+        this.ghost.movement.nextDirection = direction;
+        this.lastDir = direction;
+        this.ghost.movement.ghostMoveDone = true;
     }
-    
+
     private Vector2Int[] ghostTargetSwitch(Ghost.Name ghost)
     {
         Vector2Int[] result;
         switch (ghost)
         {
-            case Ghost.Name.Blinky: 
+            case Ghost.Name.Blinky:
                 result = blinkyPattern;
                 break;
             case Ghost.Name.Clyde:
                 result = ClydePattern;
                 break;
             case Ghost.Name.Inky:
-                result  = InkyPattern;
+                result = InkyPattern;
                 break;
             case Ghost.Name.Pinky:
-                result  = PinkyPattern;
+                result = PinkyPattern;
                 break;
-            default: 
+            default:
                 result = blinkyPattern;
                 break;
         }
@@ -130,9 +108,9 @@ public class GhostScatter : GhostBehaviour
         {
             if (targetPosition != null)
             {
-                
+
                 Gizmos.color = Color.blue;
-                Vector3 offsetPos = new Vector3(targetPosition.x + 10.5f,targetPosition.y + 10.5f, 0);
+                Vector3 offsetPos = new Vector3(targetPosition.x, targetPosition.y, 0);
                 Gizmos.DrawCube(offsetPos, Vector3.one * 0.5f);
             }
         }
