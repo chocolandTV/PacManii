@@ -53,7 +53,7 @@ public class PacMan : MonoBehaviour
         if(context.performed)
         {
             mov.nextDirection = Vector2.zero;
-            // Debug.Log(mov.GridPosition());
+            Debug.Log(mov.GridPosition());
             // Debug.Log(mov.DistanceCheck(ghosty.position));
         }
     }

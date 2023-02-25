@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palletAfterEffectPrefab: {fileID: 9148898372217455995, guid: 0b555a818eba0e1448fea82998b9358e, type: 3}
+  ghosty: {fileID: 0}
 --- !u!114 &919132147839368438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +279,9 @@ MonoBehaviour:
   speed: 4
   speedMultiplier: 2
   initialDirection: {x: 0, y: 0}
-  mazeObject: {fileID: 0}
-  _drawGizmos: 0
+  ghostMoveDone: 0
+  rigidbody: {fileID: 0}
+  _drawGizmos: 1
 --- !u!114 &919132147839368439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +387,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e6fabe16-8c1a-456d-8c69-df46697d393a
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5280688270360702186}
+        m_TargetAssemblyTypeName: PacMan, Assembly-CSharp
+        m_MethodName: OnStopMoving
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ffa872ba-caeb-4a6b-a290-50f25eb81c94
+    m_ActionName: Player/StopMoving[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

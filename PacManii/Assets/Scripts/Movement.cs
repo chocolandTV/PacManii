@@ -57,10 +57,11 @@ public class Movement : MonoBehaviour
     {
        if(forced)
         { 
+            Debug.Log("Forced Movement");
             this.direction = dir;
-            nextDirection = Vector2.zero;
+            this.nextDirection = Vector2.zero;
         }else{
-            nextDirection = dir;
+            this.nextDirection = dir;
         }
     }
 
@@ -86,7 +87,7 @@ public class Movement : MonoBehaviour
     }
     private void Move()
     {
-        if (maze.CheckIfDirValid(this.direction, this.rigidbody.position))// ONLY FOR PACMAN
+        if (maze.CheckIfDirValid(this.direction, this.rigidbody.position))
         {
 
             Vector2 position = this.rigidbody.position;
@@ -118,16 +119,16 @@ public class Movement : MonoBehaviour
         // CUTPOSITION
         Vector3 cutPosition = new Vector3(Mathf.RoundToInt(rigidbody.position.x), Mathf.RoundToInt(rigidbody.position.y), -2);
         // CHECK UP
-        if (maze.CheckIfDirValid(Vector2.up, this.rigidbody.position))
+        if (maze.CheckIfDirValid(Vector2.up, cutPosition))
             result.Add(Vector2Int.up);
         // CHECK LEFT
-        if (maze.CheckIfDirValid(Vector2.left, this.rigidbody.position))
+        if (maze.CheckIfDirValid(Vector2.left, cutPosition))
             result.Add(Vector2Int.left);
         // CHECK DOWN
-        if (maze.CheckIfDirValid(Vector2.down, this.rigidbody.position))
+        if (maze.CheckIfDirValid(Vector2.down, cutPosition))
             result.Add(Vector2Int.down);
         // CHECK RIGHT
-        if (maze.CheckIfDirValid(Vector2.right, this.rigidbody.position))
+        if (maze.CheckIfDirValid(Vector2.right, cutPosition))
             result.Add(Vector2Int.right);
         return result;
 

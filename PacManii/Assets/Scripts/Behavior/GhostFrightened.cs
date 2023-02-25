@@ -4,9 +4,9 @@ using System.Collections.Generic;
 public class GhostFrightened : GhostBehaviour
 {
     public bool eaten { get; private set; }
-    public GameObject body;
-    public GameObject eyes;
-    public GameObject fright;
+    private GameObject body;
+    private GameObject eyes;
+    private GameObject fright;
     private Vector2Int lastDir;
     private Vector2Int HomePosition = new Vector2Int(0, 1);
     private void FixedUpdate()
@@ -26,10 +26,11 @@ public class GhostFrightened : GhostBehaviour
     {
         List<Vector2Int> validDirections = this.ghost.movement.AvailableDirections();
 
-        if (validDirections.Contains(-lastDir))
-        {
-            validDirections.Remove(-lastDir);
-        }
+        // if (validDirections.Contains(-lastDir))
+        // {
+        //    
+        validDirections.Remove(-lastDir);
+        // }
         //IF PACMAN IS NEARBY TURN 
         
         this.lastDir =validDirections[Random.Range(0,validDirections.Count)];
@@ -86,9 +87,9 @@ public override void Enable(float duration)
 {
     base.Enable(duration);
 
-    body.SetActive(false);
-    eyes.SetActive(false);
-    fright.SetActive(false);
+    // body.SetActive(false);
+    // eyes.SetActive(false);
+    // fright.SetActive(false);
 
     Invoke(nameof(Flash), duration / 2f);
 }
@@ -97,9 +98,9 @@ public override void Disable()
 {
     base.Disable();
 
-    body.SetActive(true);
-    eyes.SetActive(true);
-    fright.SetActive(true);
+    // body.SetActive(true);
+    // eyes.SetActive(true);
+    // fright.SetActive(true);
 
 }
 
@@ -111,9 +112,9 @@ private void Eaten()
 
     ghost.home.Enable(duration);
 
-    body.SetActive(false);
-    eyes.SetActive(true);
-    fright.SetActive(false);
+    // body.SetActive(false);
+    // eyes.SetActive(true);
+    // fright.SetActive(false);
 
 }
 

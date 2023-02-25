@@ -22,39 +22,44 @@ public class GhostScatter : GhostBehaviour
     {
         ghost.chase.Enable();
     }
+    private void Start() {
+        Debug.Log("Ghost.Scatter Started");
+    }
     private void FixedUpdate() {
-        if(this.ghost.movement.ghostMoveDone)
-        {
-            this.ghost.movement.ghostMoveDone=false;
-            if(this.ghost.movement.GridPosition() == targetPosition)
-            {
-                updateTarget();
-            }
-            HandleNextDirection();
-        }
+        
+        updateTarget();
+            
+        HandleNextDirection();
+        
     }
     private void updateTarget()
     {
         if(tempSteps.Count == 0)// when all targets done renew
-
         {
             tempSteps.Clear();
             foreach ( Vector2Int x in ghostTargetSwitch(this.ghost.ghostName))
             {
                 tempSteps.Add(x);
             }
+            
+
         }else 
         {
-            tempSteps.Remove(tempSteps[0]);
+            if(targetPosition == this.ghost.movement.GridPosition()){
+                Debug.Log("Reached Waypoint.");
+                tempSteps.Remove(tempSteps[0]);
+               
+            }
         }
-        targetPosition = tempSteps[0];
+         targetPosition = tempSteps[0];
+         Debug.Log(targetPosition);
 
     }
     private void HandleNextDirection()
     {
         List<Vector2Int> validDirections = this.ghost.movement.AvailableDirections();
-        if (validDirections.Count > 2)
-        {
+        // if (validDirections.Count > 2)
+        // {
             Vector2Int ghostpos = this.ghost.movement.GridPosition();
             float minDistance = float.MaxValue;
             foreach (Vector2Int x in validDirections)
@@ -76,22 +81,22 @@ public class GhostScatter : GhostBehaviour
             this.ghost.movement.nextDirection = direction;
             this.lastDir = direction;
             this.ghost.movement.ghostMoveDone = true; 
-        }
-        else
-        {// ONLY 2 DIRECTIONS !
-            Debug.Log(" ONLY 2 DIRECTIONS");
-            // CHECK TUNNLES
-            if (validDirections.Contains(lastDir)){
-                this.ghost.movement.nextDirection = lastDir;
-                Debug.Log(" Decide Tunnle");}
-            else// CHECK CORNERS
-            {   // GO NEXT INTERSECTION 
-                validDirections.Remove(-lastDir);
-                this.ghost.movement.nextDirection = validDirections[0];
-                Debug.Log(" Decide Corner with direction : " + validDirections[0]);
+        // }
+        // else
+        // {// ONLY 2 DIRECTIONS !
+        //     Debug.Log(" ONLY 2 DIRECTIONS");
+        //     // CHECK TUNNLES
+        //     if (validDirections.Contains(lastDir)){
+        //         this.ghost.movement.nextDirection = lastDir;
+        //         Debug.Log(" Decide Tunnle");}
+        //     else// CHECK CORNERS
+        //     {   // GO NEXT INTERSECTION 
+        //         validDirections.Remove(-lastDir);
+        //         this.ghost.movement.nextDirection = validDirections[0];
+        //         Debug.Log(" Decide Corner with direction : " + validDirections[0]);
                 
-            }
-        }
+        //     }
+        // }
         
 
     }

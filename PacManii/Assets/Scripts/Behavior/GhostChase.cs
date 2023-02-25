@@ -138,15 +138,15 @@ public class GhostChase : GhostBehaviour
     private string StringDirection(Vector2 pos)
     {
         if (pos == Vector2.up)
-            return "Ghost.Next(up)";
+            return "validDir(up)";
         if (pos == Vector2.down)
-            return "Ghost.Next(down)";
+            return "validDir(down)";
         if (pos == Vector2.left)
-            return "Ghost.Next(left)";
+            return "validDir(left)";
 
         if (pos == Vector2.right)
-            return "Ghost.Next(right)";
-        return "Ghost.Next(Null)";
+            return "validDir(right)";
+        return "validDir(Null)";
     }
    private void OnDisable()
     {
