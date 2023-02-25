@@ -42,10 +42,10 @@ public class GhostChase : GhostBehaviour
 
     public Vector2Int target;
     private Vector2Int lastDir;
-    private void Start()
-    {
-        Debug.Log("CHASE STARTED");
-    }
+    // private void Start()
+    // {
+    //     Debug.Log("CHASE STARTED");
+    // }
     private void FixedUpdate()
     {
 
@@ -54,7 +54,7 @@ public class GhostChase : GhostBehaviour
             this.ghost.movement.ghostMoveDone = false;
             updateTarget();
         }
-            HandleNextDirection();
+        HandleNextDirection();
         
 
     }
@@ -134,6 +134,7 @@ public class GhostChase : GhostBehaviour
             {   // GO NEXT INTERSECTION 
                 validDirections.Remove(-lastDir);
                 this.ghost.movement.nextDirection = validDirections[0];
+                this.lastDir = validDirections[0];
                 // Debug.Log(StringDirection(validDirections[0]));
             }
         }
@@ -157,6 +158,8 @@ public class GhostChase : GhostBehaviour
     private void OnDisable()
     {
         ghost.scatter.Enable();
+         Debug.Log("SCATTER STARTED");
+         this.ghost.movement.ghostMoveDone = true;
     }
 
 }

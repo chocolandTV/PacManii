@@ -23,7 +23,7 @@ public class MazeGrid : MonoBehaviour
     public bool[,] mazeGrid { get; private set; }
     private GameObject level;
     public int MazeSize = 21;
-    private Vector3 offset;
+    public Vector3 offset;
 
     private void Start()
     {
@@ -113,6 +113,7 @@ public class MazeGrid : MonoBehaviour
         }
         return result;
     }
+    
     public Vector2Int GridPosition(Vector3 pos)
     {
         Vector3Int Gridposition = Vector3Int.RoundToInt(pos) +

@@ -85,6 +85,10 @@ public class Movement : MonoBehaviour
     {
         return maze.GridPosition(pos);
     }
+    public Vector3 RealPosition(Vector2Int pos)
+    {
+        return new Vector3( pos.x+maze.offset.x, pos.y + maze.offset.y, -1f);
+    }
     private void Move()
     {
         if (maze.CheckIfDirValid(this.direction, this.rigidbody.position))
@@ -108,7 +112,7 @@ public class Movement : MonoBehaviour
         Vector2Int checkPos = GridPosition();
         if(checkPos != currentPosition) // next intereselection
         {
-            ghostMoveDone =true;
+            // ghostMoveDone =true;
             currentPosition = checkPos;
 
         }
