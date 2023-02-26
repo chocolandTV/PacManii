@@ -48,7 +48,7 @@ public class GhostChase : GhostBehaviour
         ghost.scatter.Enable();
         Debug.Log("SCATTER STARTED");
         this.ghost.movement.ghostMoveDone = true;
-        this.ghost.movement.speedMultiplier += 1.01f;
+        
         
     }
     private void FixedUpdate()
