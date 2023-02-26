@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class GhostBehaviour: MonoBehaviour
 {
    public Ghost ghost {get; private set;}
-    public float duration;
+   public float duration;
+   public Vector2Int lastDir;
    private void Awake() {
         this.ghost = GetComponent<Ghost>();
         

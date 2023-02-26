@@ -4,10 +4,10 @@ using System.Collections.Generic;
 public class GhostFrightened : GhostBehaviour
 {
     public bool eaten { get; private set; }
-    private GameObject body;
-    private GameObject eyes;
-    private GameObject fright;
-    private Vector2Int lastDir;
+    public GameObject BaseGhost;
+    public GameObject BaseFrightened;
+    public GameObject BaseEyes;
+    // private Vector2Int lastDir;
     private Vector2Int HomePosition = new Vector2Int(0, 1);
     private void FixedUpdate()
     {
@@ -87,9 +87,9 @@ public override void Enable(float duration)
 {
     base.Enable(duration);
 
-    // body.SetActive(false);
-    // eyes.SetActive(false);
-    // fright.SetActive(false);
+    BaseGhost.SetActive(false);
+    BaseFrightened.SetActive(true);
+    BaseEyes.SetActive(false);
 
     Invoke(nameof(Flash), duration / 2f);
 }
@@ -98,9 +98,9 @@ public override void Disable()
 {
     base.Disable();
 
-    // body.SetActive(true);
-    // eyes.SetActive(true);
-    // fright.SetActive(true);
+    BaseGhost.SetActive(true);
+    BaseFrightened.SetActive(false);
+    BaseEyes.SetActive(false);
 
 }
 
@@ -112,9 +112,9 @@ private void Eaten()
 
     ghost.home.Enable(duration);
 
-    // body.SetActive(false);
-    // eyes.SetActive(true);
-    // fright.SetActive(false);
+    BaseGhost.SetActive(false);
+    BaseFrightened.SetActive(false);
+    BaseEyes.SetActive(true);
 
 }
 
@@ -122,7 +122,7 @@ private void Flash()
 {
     if (!eaten)
     {
-        fright.SetActive(false);
+        BaseEyes.SetActive(false);
         // ANIMATE
     }
 }
@@ -130,13 +130,13 @@ private void Flash()
 private void OnEnable()
 {
     // ANIMATE
-    ghost.movement.speedMultiplier = 0.5f;
+    ghost.movement.speedMultiplier *= 0.5f;
     eaten = false;
 }
 
 private void OnDisable()
 {
-    ghost.movement.speedMultiplier = 1f;
+    ghost.movement.speedMultiplier *= 1f;
     eaten = false;
 }
 

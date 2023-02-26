@@ -15,25 +15,19 @@ public class GhostScatter : GhostBehaviour
     private Vector2Int PinkyTarget = new Vector2Int(4, 18);
     private Vector2Int BlinkyTarget = new Vector2Int(16, 18);
     private Vector2Int targetPosition= Vector2Int.zero;
-    private Vector2Int lastDir;
+    // private Vector2Int lastDir;
     private int currentWayPoint = 0;
     // private List<Vector2Int> tempSteps = new List<Vector2Int>();
     public bool _drawGizmos;
     private void OnDisable()
     {
-        // ghost.chase.Enable();
-        //  Debug.Log("CHASE STARTED");
-         this.ghost.movement.ghostMoveDone = true;
+        ghost.chase.Enable();
+        Debug.Log("CHASE STARTED");
+        this.ghost.movement.ghostMoveDone = true;
+        this.ghost.movement.speedMultiplier += 1.05f;
     }
-    private void OnEnable()
-    {
-        Debug.Log(" TEST ONEnable currentWayPoint = " + currentWayPoint);
-    }
-    // private void Start()
-    // {
-    //     Debug.Log("Ghost.Scatter Started");
-        
-    // }
+    
+    
     private void FixedUpdate()
     {
 
@@ -52,40 +46,59 @@ public class GhostScatter : GhostBehaviour
                 }else{
                     currentWayPoint++;
                 }
-                Debug.Log("Reached Waypoint.");
+                // Debug.Log("Reached Waypoint.");
                 
 
             }
         targetPosition = ghostTargetSwitch(this.ghost.ghostName)[currentWayPoint];
-        // Debug.Log(targetPosition);
+        
 
     }
     private void HandleNextDirection()
     {
-        List<Vector2Int> validDirections = this.ghost.movement.AvailableDirections();
-        // if (validDirections.Count > 2)
-        // {
-        Vector2Int ghostpos = this.ghost.movement.GridPosition();
-        float minDistance = float.MaxValue;
-        foreach (Vector2Int x in validDirections)
+         List<Vector2Int> validDirections = this.ghost.movement.AvailableDirections();
+        if (validDirections.Count > 2)
         {
-            float dist = Vector2Int.Distance(x + ghostpos, targetPosition);
-            if (dist < minDistance)
-                minDistance = dist;
-        }
-        // #3
-        Vector2Int direction = Vector2Int.zero;
-        foreach (Vector2Int x in validDirections)
-        {
-            if (Vector2Int.Distance(x + ghostpos, targetPosition) == minDistance && x != lastDir)
+            Vector2Int ghostpos = this.ghost.movement.GridPosition();
+            float minDistance = float.MaxValue;
+            foreach (Vector2Int x in validDirections)
             {
-                direction = x;
-                break;
+                float dist = Vector2Int.Distance(x + ghostpos, targetPosition);
+                if (dist < minDistance)
+                    minDistance = dist;
+            }
+            // #3
+            Vector2Int direction = Vector2Int.zero;
+            foreach (Vector2Int x in validDirections)
+            {
+                if (Vector2Int.Distance(x + ghostpos, targetPosition) == minDistance)
+                {
+                    direction = x;
+                    break;
+                }
+            }
+            this.ghost.movement.nextDirection = direction;
+            this.lastDir = direction;
+            this.ghost.movement.ghostMoveDone = true;
+        }
+        else
+        {// ONLY 2 DIRECTIONS !
+            // CHECK TUNNLES
+            if (validDirections.Contains(lastDir))
+            {
+                this.ghost.movement.nextDirection = lastDir;
+                
+            }
+            else// CHECK CORNERS
+            {   // GO NEXT INTERSECTION 
+                validDirections.Remove(-lastDir);
+                this.ghost.movement.nextDirection = validDirections[0];
+                this.lastDir = validDirections[0];
+                // Debug.Log(StringDirection(validDirections[0]));
             }
         }
-        this.ghost.movement.nextDirection = direction;
-        this.lastDir = direction;
-        this.ghost.movement.ghostMoveDone = true;
+
+
     }
 
     private Vector2Int[] ghostTargetSwitch(Ghost.Name ghost)
@@ -120,7 +133,7 @@ public class GhostScatter : GhostBehaviour
                 Vector3 cutPosition = this.ghost.movement.RealPosition(targetPosition);
                 
                 Gizmos.color = Color.blue;
-                // Vector3 offsetPos = new Vector3(targetPosition.x, targetPosition.y, 0);
+                
                 Gizmos.DrawCube(cutPosition, Vector3.one * 0.5f);
             }
         }

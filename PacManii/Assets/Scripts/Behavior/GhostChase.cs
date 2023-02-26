@@ -41,11 +41,16 @@ public class GhostChase : GhostBehaviour
     [SerializeField] private Vector2 Offset = new Vector2(0, 0);  // DISTANCE 
 
     public Vector2Int target;
-    private Vector2Int lastDir;
-    // private void Start()
-    // {
-    //     Debug.Log("CHASE STARTED");
-    // }
+    // private Vector2Int lastDir;
+
+    private void OnDisable()
+    {
+        ghost.scatter.Enable();
+        Debug.Log("SCATTER STARTED");
+        this.ghost.movement.ghostMoveDone = true;
+        this.ghost.movement.speedMultiplier += 1.05f;
+        
+    }
     private void FixedUpdate()
     {
 
@@ -154,12 +159,6 @@ public class GhostChase : GhostBehaviour
         if (pos == Vector2.right)
             return "validDir(right)";
         return "validDir(Null)";
-    }
-    private void OnDisable()
-    {
-        ghost.scatter.Enable();
-         Debug.Log("SCATTER STARTED");
-         this.ghost.movement.ghostMoveDone = true;
     }
 
 }

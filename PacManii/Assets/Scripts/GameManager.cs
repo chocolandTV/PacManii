@@ -230,4 +230,11 @@ public class GameManager : MonoBehaviour
         SetPellets(this.pelletsRemaining - 1);
         //ADD SCORE FOR PELLET
     }
+    public void SuperPelletEffect()
+    {
+        foreach (Ghost x in ghosts)
+        {
+            x.frightened.Enable(8);
+        }
+    }
 }
