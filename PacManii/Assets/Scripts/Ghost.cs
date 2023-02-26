@@ -47,7 +47,8 @@ public class Ghost : MonoBehaviour
     {
         SCATTER,
         CHASE,
-        FRIGHTENED
+        FRIGHTENED,
+        GOHOME
     }
     public Name ghostName;
     public GhostState ghostState;
