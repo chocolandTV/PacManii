@@ -59,10 +59,17 @@ public class PacMan : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        // if (other.CompareTag("Ghost"))
-        // {
-        //     _gameManager.LoseLive();
-        // }
+        if (other.CompareTag("Ghost"))
+        {
+            //  _gameManager.LoseLive();
+            if(other.gameObject.GetComponent<Ghost>().ghostState == Ghost.GhostState.FRIGHTENED)
+            {
+                FindObjectOfType<GameManager>().GhostEaten(other.gameObject.GetComponent<Ghost>());
+            }
+            else{
+                _gameManager.LoseLive();
+            }
+        }
 
         // if (other.CompareTag("Frightend"))
         // {

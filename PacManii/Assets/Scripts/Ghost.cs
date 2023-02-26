@@ -43,14 +43,14 @@ public class Ghost : MonoBehaviour
         Pinky,//Pink
         Clyde // Orange FFB751
     }
-    private enum GhostState
+    public enum GhostState
     {
         SCATTER,
         CHASE,
         FRIGHTENED
     }
     public Name ghostName;
-    private GhostState ghostState;
+    public GhostState ghostState;
     // Start is called before the first frame update
     void Awake()
     {

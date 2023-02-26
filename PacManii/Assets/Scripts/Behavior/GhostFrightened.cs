@@ -81,7 +81,7 @@ private void HandleFrightenedGhost()
     if (validDirections.Count > 2)
     {
         Vector2Int ghostpos = this.ghost.movement.GridPosition();
-        float maxDistance = float.MaxValue;
+        float maxDistance = float.MinValue;
         foreach (Vector2Int x in validDirections)
         {
             float dist = Vector2Int.Distance(x + ghostpos, currentTarget);
@@ -124,7 +124,7 @@ public override void Enable(float duration)
     BaseGhost.SetActive(false);
     BaseFrightened.SetActive(true);
     BaseEyes.SetActive(false);
-
+    this.ghost.ghostState =Ghost.GhostState.FRIGHTENED;
     Invoke(nameof(Flash), duration / 2f);
 }
 
@@ -135,6 +135,7 @@ public override void Disable()
     BaseGhost.SetActive(true);
     BaseFrightened.SetActive(false);
     BaseEyes.SetActive(false);
+    this.ghost.ghostState =Ghost.GhostState.CHASE;
 
 }
 
@@ -170,7 +171,7 @@ private void OnEnable()
 
 private void OnDisable()
 {
-    ghost.movement.speedMultiplier *= 1f;
+    ghost.movement.speedMultiplier *= 1.5f;
     eaten = false;
 }
 
