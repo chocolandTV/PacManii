@@ -67,10 +67,23 @@ public class PacMan : MonoBehaviour
                 FindObjectOfType<GameManager>().GhostEaten(other.gameObject.GetComponent<Ghost>());
             }
             else{
-                _gameManager.LoseLive();
+                // _gameManager.LoseLive();
             }
         }
-
+        if(other.CompareTag("Collectable"))
+        {
+            Debug.Log("collect cherry");
+            _gameManager.CollectFruits();
+            palletAfterEffectObject.transform.position = other.transform.position;
+            ParticleSystem.MainModule settings = palletAfterEffectObject.GetComponent<ParticleSystem>().main;
+            settings.startColor = new Color(1f, 0f, 0f, 1f);
+            palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
+            Destroy(other.gameObject, 0.0f);
+            // 0.9999995
+            // Reset color to blue
+            // settings.startColor = new Color(0f, 0.9999995f, 1f, 1f);
+            
+        }
         // if (other.CompareTag("Frightend"))
         // {
         //     // other.GetComponent<Movement>().MoveFrightend();
@@ -88,6 +101,8 @@ public class PacMan : MonoBehaviour
         {
             _gameManager.CollectPellet();
             palletAfterEffectObject.transform.position = other.transform.position;
+            ParticleSystem.MainModule settings = palletAfterEffectObject.GetComponent<ParticleSystem>().main;
+            settings.startColor = new Color(0f, 0.9999995f, 1f, 1f);
             palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
             Destroy(other.gameObject, 0.0f);
 
@@ -96,6 +111,8 @@ public class PacMan : MonoBehaviour
         {
             _gameManager.CollectPellet();
             palletAfterEffectObject.transform.position = other.gameObject.transform.position;
+            ParticleSystem.MainModule settings = palletAfterEffectObject.GetComponent<ParticleSystem>().main;
+            settings.startColor = new Color(0f, 0.9999995f, 1f, 1f);
             palletAfterEffectObject.GetComponent<ParticleSystem>().Play();
             _gameManager.SuperPelletEffect();
             Destroy(other.gameObject, 0.0f);

@@ -11,6 +11,7 @@ TagManager:
   - Teleport2
   - pallets
   - SuperPallet
+  - Collectable
   layers:
   - Default
   - TransparentFX

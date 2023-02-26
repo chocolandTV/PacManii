@@ -230,6 +230,10 @@ public class GameManager : MonoBehaviour
         SetPellets(this.pelletsRemaining - 1);
         //ADD SCORE FOR PELLET
     }
+    public void CollectFruits()
+    {
+        SetCherries(this.cherries +1);
+    }
     public void SuperPelletEffect()
     {
         foreach (Ghost x in ghosts)

@@ -291,6 +291,7 @@ MonoBehaviour:
   initialBehavior: {fileID: 0}
   ChaseOffset: {x: 0, y: 0}
   ghostName: 1
+  ghostState: 0
 --- !u!54 &8819054050948252393
 Rigidbody:
   m_ObjectHideFlags: 0
