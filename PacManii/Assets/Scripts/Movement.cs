@@ -15,7 +15,9 @@ public class Movement : MonoBehaviour
     public Vector2 nextDirection { get; set; }
     public Vector3 startingPosition { get; private set; }
     private Vector2Int currentPosition;
-    // public GameObject mazeObject;
+    // GHOST EYES
+    [field: SerializeField] private GameObject ghostEyes;
+    private Vector3 eyeOffset = new Vector3( 0.031f,0.012f,0);
     private MazeGrid maze;
     [field: SerializeField] private bool _drawGizmos = false;
 
@@ -98,7 +100,7 @@ public class Movement : MonoBehaviour
             Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
 
             this.rigidbody.MovePosition(position + translation);
-
+            AnimateEyes();
             if (this.direction.y != 0)// SNAP Y
             {
                 transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z);
@@ -116,6 +118,12 @@ public class Movement : MonoBehaviour
             currentPosition = checkPos;
 
         }
+    }
+    private void AnimateEyes()
+    {
+        //switch this direction * offset
+        ghostEyes.transform.localPosition= new Vector3(-this.direction.x * 0.04f,this.direction.y * 0.05f, 0.03f) + eyeOffset;
+        
     }
     public List<Vector2Int> AvailableDirections()
     {

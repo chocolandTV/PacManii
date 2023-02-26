@@ -46,7 +46,7 @@ public class GhostChase : GhostBehaviour
     private void OnDisable()
     {
         ghost.scatter.Enable();
-        Debug.Log("SCATTER STARTED");
+        // Debug.Log("SCATTER STARTED");
         this.ghost.movement.ghostMoveDone = true;
         
         

@@ -22,7 +22,7 @@ public class GhostScatter : GhostBehaviour
     private void OnDisable()
     {
         ghost.chase.Enable();
-        Debug.Log("CHASE STARTED");
+        // Debug.Log("CHASE STARTED");
         this.ghost.movement.ghostMoveDone = true;
         
     }

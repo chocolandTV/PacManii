@@ -18,7 +18,9 @@ public static class SoundManager
     
     public static void PlaySound(AudioSource source, clip name)
     {
-        // source.Play(getClip(name));
+        source.clip = getClip(name);
+        source.Play();
+        
     }
     private static AudioClip getClip(clip name)
     {

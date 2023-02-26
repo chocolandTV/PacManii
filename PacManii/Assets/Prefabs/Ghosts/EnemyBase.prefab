@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7243285491990392086}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.033, y: 0.009, z: 0}
+  m_LocalPosition: {x: 0.031, y: 0.012, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,6 +270,9 @@ MonoBehaviour:
   speed: 1
   speedMultiplier: 2
   initialDirection: {x: 0, y: 0}
+  ghostMoveDone: 0
+  rigidbody: {fileID: 0}
+  ghostEyes: {fileID: 0}
   _drawGizmos: 1
 --- !u!114 &8819054050948252392
 MonoBehaviour:
@@ -286,8 +289,7 @@ MonoBehaviour:
   points: 200
   pacManPos: {fileID: 0}
   initialBehavior: {fileID: 0}
-  target: {fileID: 0}
-  TargetDone: 0
+  ChaseOffset: {x: 0, y: 0}
   ghostName: 1
 --- !u!54 &8819054050948252393
 Rigidbody:
@@ -318,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
+  lastDir: {x: 0, y: 0}
 --- !u!114 &1403101232599464198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 7
+  lastDir: {x: 0, y: 0}
+  _drawGizmos: 0
 --- !u!114 &121586414820893374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +349,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 20
+  lastDir: {x: 0, y: 0}
+  Offset: {x: 0, y: 0}
+  target: {x: 0, y: 0}
 --- !u!114 &3911060625145794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 8
+  lastDir: {x: 0, y: 0}
+  BaseGhost: {fileID: 0}
+  BaseFrightened: {fileID: 0}
+  BaseEyes: {fileID: 0}
 --- !u!1001 &1724359432177098882
 PrefabInstance:
   m_ObjectHideFlags: 0
