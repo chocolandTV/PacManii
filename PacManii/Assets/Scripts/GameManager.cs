@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject hudObject;
     [SerializeField] private GameObject gameoverObject;
     [SerializeField] private GameObject menuObject;
-   
+    [SerializeField] private GameObject GameWinObject;
     private HUD hudScript;
     // STATS AND COLLECTABLES
     public int score { get; private set; }
@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
         Menu,
         Paused,
         Running,
-        GameOver
+        GameOver,
+        GameWin
     }
 
     private void Start()
@@ -120,6 +121,14 @@ public class GameManager : MonoBehaviour
             gameoverObject.SetActive(true);
         }
     }
+    private void GameWin()
+    {
+        if(currentState == GameState.Running)
+        {
+            currentState = GameState.GameWin;
+            // SHOW WIN MENU Highscore + Next Level
+        }
+    }
     private void ResetGhostMultiplier()
     {
 
@@ -140,6 +149,10 @@ public class GameManager : MonoBehaviour
     private void SetPellets(int pallets)
     {
         this.pelletsRemaining = pallets;
+        if(this.pelletsRemaining == 0)
+        {
+            GameWin();
+        }
         hudScript.OnValueChanged(pallets, HUD.TextType.pellet);
     }
     private void SetLevel(int _level)
@@ -240,5 +253,9 @@ public class GameManager : MonoBehaviour
         {
             x.frightened.Enable(8);
         }
+    }
+    public bool PacManAlive()
+    {
+         return (this.lives > 0);
     }
 }

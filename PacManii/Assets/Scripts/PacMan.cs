@@ -61,13 +61,13 @@ public class PacMan : MonoBehaviour
     {
         if (other.CompareTag("Ghost"))
         {
-            //  _gameManager.LoseLive();
+            
             if(other.gameObject.GetComponent<Ghost>().ghostState == Ghost.GhostState.FRIGHTENED)
             {
                 FindObjectOfType<GameManager>().GhostEaten(other.gameObject.GetComponent<Ghost>());
             }
             else{
-                // _gameManager.LoseLive();
+                _gameManager.LoseLive();
             }
         }
         if(other.CompareTag("Collectable"))
