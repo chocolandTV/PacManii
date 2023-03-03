@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SoundManager 
+public class SoundManager:MonoBehaviour
 {
-    public static AudioClip click;
-    public static AudioClip death;
-    public static AudioClip powerPellet;
-    public static AudioClip win;
+    public AudioClip click;
+    public AudioClip death;
+    public AudioClip powerPellet;
+    public AudioClip win;
     public enum clip
     {
         Click,
@@ -15,14 +15,24 @@ public static class SoundManager
         PowerPellet,
         Win
     }
-    
-    public static void PlaySound(AudioSource source, clip name)
-    {
-        source.clip = getClip(name);
-        source.Play();
+    public static SoundManager Instance {get;private set;}
+    private void Awake() {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         
     }
-    private static AudioClip getClip(clip name)
+    public static void PlaySound(AudioSource source, clip name)
+    {
+        source.clip = Instance.getClip(name);
+        source.Play();
+        // SoundManager.Instance.PlaySound();
+        
+    }
+    private AudioClip getClip(clip name)
     {
         switch (name)
         {
