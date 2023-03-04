@@ -29,6 +29,7 @@ public class Button : MonoBehaviour
 
         {
             SceneManager.LoadScene(gameManager.level +1);
+            gameManager.NextLevel();
         }
     }
     public void OnButtonEnterResume()

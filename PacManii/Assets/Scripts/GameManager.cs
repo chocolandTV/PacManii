@@ -126,8 +126,23 @@ public class GameManager : MonoBehaviour
         if(currentState == GameState.Running)
         {
             currentState = GameState.GameWin;
+            
             // SHOW WIN MENU Highscore + Next Level
         }
+    }
+    public void NextLevel()
+    {
+        this.SetLevel(this.level +1);
+        // LOAD GAMEMANAGER 
+        // RESET PACMAN AND GHOST POSITIONS TO LEVEL DEFAULT STATS
+        // RESTART MUSIC (/) 
+        // UPDATE UI REMAINING
+        // GET NEW PATTERN WAYPOINTS FOR SCATTER GHOSTS ?!
+        // CHANGE MATERIAL PELLETS
+    }
+    private void ChangePelletMaterial(Material mat)
+    {
+        
     }
     private void ResetGhostMultiplier()
     {
@@ -203,6 +218,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * this.ghostMultiplier;
         SetScore(this.score + ghost.points);
         this.ghostMultiplier ++;
+        ghost.home.Enable();
     }
     public void PacmanEaten()
     {
