@@ -36,6 +36,7 @@ public class GhostHome :  GhostBehaviour
         if (targetPosition == this.ghost.movement.GridPosition())
             {
                 // SCRIPT 
+                Debug.Log("Move Down to GhostHouse");
                 this.ghost.transform.Translate(Vector3.down*2,Space.World);
                 ghost.home.Disable();
             }

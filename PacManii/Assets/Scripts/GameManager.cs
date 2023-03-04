@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public Ghost[] ghosts;
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameoverObject;
     [SerializeField] private GameObject menuObject;
     [SerializeField] private GameObject GameWinObject;
+    [SerializeField] private TextMeshProUGUI GameWinText;
+    [SerializeField] private GameObject HudInfoObject;
+    [SerializeField] private TextMeshProUGUI HudInfoText;
     private HUD hudScript;
     // STATS AND COLLECTABLES
     public int score { get; private set; }
@@ -126,7 +130,16 @@ public class GameManager : MonoBehaviour
         if(currentState == GameState.Running)
         {
             currentState = GameState.GameWin;
-            
+             for (int i = 0; i < this.ghosts.Length; i++)
+            {
+                this.ghosts[i].gameObject.SetActive(false);
+            }
+             this.pacman.gameObject.SetActive(false);
+            // GAMESPEED 0
+            // GAMEOVER MENU ON RETRY BUTTON
+            Time.timeScale = 0;
+            GameWinObject.SetActive(true);
+            GameWinText.text = ("Level: " + this.level + " with Score: " + this.score);
             // SHOW WIN MENU Highscore + Next Level
         }
     }
@@ -164,7 +177,7 @@ public class GameManager : MonoBehaviour
     private void SetPellets(int pallets)
     {
         this.pelletsRemaining = pallets;
-        if(this.pelletsRemaining == 0)
+        if(this.pelletsRemaining < 1)
         {
             GameWin();
         }
@@ -218,7 +231,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * this.ghostMultiplier;
         SetScore(this.score + ghost.points);
         this.ghostMultiplier ++;
-        ghost.home.Enable();
+        ghost.home.Enable(10);
     }
     public void PacmanEaten()
     {

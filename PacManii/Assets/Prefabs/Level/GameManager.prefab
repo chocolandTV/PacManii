@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2283601379091898554}
   - component: {fileID: 2283601379091898557}
+  - component: {fileID: 368386555}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -44,10 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00db645ed3b5fe847912e5c630b15ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghosts: []
+  ghosts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pacman: {fileID: 0}
   pellets: {fileID: 0}
   hudObject: {fileID: 0}
   gameoverObject: {fileID: 0}
   menuObject: {fileID: 1966979131470031401, guid: 2eede842d1e613e409f15111eb2dcf21, type: 3}
+  GameWinObject: {fileID: 0}
+  GameWinText: {fileID: 0}
+  HudInfoObject: {fileID: 0}
+  HudInfoText: {fileID: 0}
+  ghostMultiplier: 1
   currentState: 2
+--- !u!114 &368386555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283601379091898556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d4a9990c495504aaea78accf219116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hmenu: {fileID: 0}
+  ControlUI: {fileID: 0}
+  SettingsUI: {fileID: 0}
+  HudMenu: {fileID: 0}
