@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI GameWinText;
     [SerializeField] private GameObject HudInfoObject;
     [SerializeField] private TextMeshProUGUI HudInfoText;
+    [SerializeField]private GameObject fruitCherry;
+    [SerializeField]private GameObject fruitPear;
     private HUD hudScript;
     // STATS AND COLLECTABLES
     public int score { get; private set; }
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
     public float soundFXVolume { get; set; } = 40.0f;
     public float musicVolume { get; set; } = 40.0f;
     public GameState currentState;
+    private float PaciStatusEffectDuration = 5.0f;
+    private float PaciStatusEffectCurrentTime=0.0f;
     // END STATS AND COLLECTABLE 
     public enum GameState
     {
@@ -49,8 +53,11 @@ public class GameManager : MonoBehaviour
             NewGame();
         }
     }
+    private void FixedUpdate() {
+        HandlePacmanStatus();
+    }
 
-    private void GetAllPallets()
+    private void GetPalletCount()
     {
         this.pelletsRemaining = GameObject.FindGameObjectsWithTag("pallets").Length +
          GameObject.FindGameObjectsWithTag("SuperPallet").Length;
@@ -64,9 +71,9 @@ public class GameManager : MonoBehaviour
         hudObject.SetActive(true);
         SetScore(0);
         SetLives(3);
-        SetCherries(9);
+        SetCherries(0);
         SetLevel(1);
-        GetAllPallets();
+        GetPalletCount();
         SetSecret(0);
         SetPaciiStatus(1);
         NewRound();
@@ -146,6 +153,7 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         this.SetLevel(this.level +1);
+        SceneManager.LoadScene(this.level);
         // LOAD GAMEMANAGER 
         // RESET PACMAN AND GHOST POSITIONS TO LEVEL DEFAULT STATS
         // RESTART MUSIC (/) 
@@ -156,6 +164,36 @@ public class GameManager : MonoBehaviour
     private void ChangePelletMaterial(Material mat)
     {
         
+    }
+    private void HandlePacmanStatus()
+    {
+        if(this.paciiStatus >1)
+        {
+            PaciStatusEffectCurrentTime += Time.deltaTime;
+            if(PaciStatusEffectCurrentTime >= PaciStatusEffectDuration)
+            {
+                SetPaciiStatus(1);
+                PaciStatusEffectCurrentTime =0.0f;
+            }
+        }
+    }
+    private void PacManStatusEffect()
+    {
+       
+       if(Random.Range(0,100) > 90)
+       {
+            
+            if(Random.Range(0,100) > 90)
+            {
+                //Frightend Mode
+                SetPaciiStatus(3);
+                Debug.Log("TimeScale. 3f FrightendMode");
+            }else{
+                // Excited MODE
+                SetPaciiStatus(2);
+                Debug.Log("TimeScale. 2f ExcitedMode");
+            }
+       }
     }
     private void ResetGhostMultiplier()
     {
@@ -260,7 +298,7 @@ public class GameManager : MonoBehaviour
         this.pacman.GetComponent<DyingAnim>().OnDeathAnimate();
         if (this.lives > 0)
         {
-            Invoke(nameof(ResetState), 2.0f);
+            Invoke(nameof(ResetState), 1.0f);
         }
         else
         {
@@ -270,7 +308,17 @@ public class GameManager : MonoBehaviour
     public void CollectPellet()
     {
         SetPellets(this.pelletsRemaining - 1);
-        //ADD SCORE FOR PELLET
+        PacManStatusEffect();
+        if(this.pelletsRemaining < 50 && fruitCherry != null)
+        {
+            fruitCherry.SetActive(true);
+        }
+        if(this.pelletsRemaining < 15 && fruitPear != null)
+        {
+            fruitPear.SetActive(true);
+        }
+        // add random Speedup effect for 3 seconds if speedup is not true
+        // chance by 5%  
     }
     public void CollectFruits()
     {

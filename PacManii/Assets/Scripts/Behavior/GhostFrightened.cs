@@ -56,6 +56,7 @@ private void HandleTarget()
                 break;
             }
         }
+        Debug.Log("NEW DIRECTION");
         this.ghost.movement.nextDirection = direction;
         this.lastDir = direction;
         this.ghost.movement.ghostMoveDone = true;
@@ -165,13 +166,13 @@ private void Flash()
 private void OnEnable()
 {
     // ANIMATE
-    ghost.movement.speedMultiplier *= 0.5f;
+    // ghost.movement.speedMultiplier *= 0.5f;
     eaten = false;
 }
 
 private void OnDisable()
 {
-    ghost.movement.speedMultiplier *= 1.5f;
+    // ghost.movement.speedMultiplier *= 1.5f;
     eaten = false;
 }
 

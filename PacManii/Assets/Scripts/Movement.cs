@@ -60,10 +60,17 @@ public class Movement : MonoBehaviour
        if(forced)
         { 
             Debug.Log("Forced Movement");
-            this.direction = this.nextDirection;
-            this.nextDirection = Vector2.zero;
+            if (maze.CheckIfDirValid(this.nextDirection, this.rigidbody.position))
+            {
+                this.direction = this.nextDirection;
+                // this.nextDirection = Vector2.zero;
+            }
         }else{
-            this.direction = this.nextDirection;
+            if (maze.CheckIfDirValid(this.nextDirection, this.rigidbody.position))
+            {
+                this.direction = this.nextDirection;
+                // this.nextDirection = Vector2.zero;
+            }
         }
     }
 

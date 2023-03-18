@@ -408,7 +408,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1025029100742346950}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: OnButtonExit
         m_Mode: 1
@@ -510,7 +510,6 @@ GameObject:
   - component: {fileID: 5304670662774656640}
   - component: {fileID: 5304670662774656641}
   - component: {fileID: 5304670662774656642}
-  - component: {fileID: 1025029100742346950}
   m_Layer: 5
   m_Name: GameWin
   m_TagString: Untagged
@@ -602,22 +601,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1025029100742346950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5304670662774656643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d4a9990c495504aaea78accf219116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hmenu: {fileID: 0}
-  ControlUI: {fileID: 0}
-  SettingsUI: {fileID: 0}
-  HudMenu: {fileID: 0}
 --- !u!1 &6992838727903141653
 GameObject:
   m_ObjectHideFlags: 0
